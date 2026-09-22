@@ -1,0 +1,45 @@
+---
+import type { Photo } from '../data/portfolio';
+interface Props {
+  photos: Photo[];
+  currentPage: number;
+  lastPage: number;
+  basePath: string;
+}
+const { photos, currentPage, lastPage, basePath } = Astro.props;
+const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${page}/`;
+---
+{photos.length > 0 ? (
+  <>
+    <div class="photo-grid">
+      {photos.map((photo, index) => (
+        <button class="photo-card" type="button" data-gallery-open data-full={photo.src} data-alt={photo.alt} data-title={photo.title ?? ''} aria-label={`查看大图：${photo.alt}`}>
+          <img src={photo.thumb} alt={photo.alt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+          <span class="photo-caption">{photo.title ?? photo.alt} <span aria-hidden="true">↗</span></span>
+        </button>
+      ))}
+    </div>
+    {lastPage > 1 && <nav class="pagination" aria-label="照片分页"><a href={currentPage > 1 ? pageHref(currentPage - 1) : undefined} aria-disabled={currentPage === 1 ? 'true' : undefined}>← 上一页</a><span>{currentPage} / {lastPage}</span><a href={currentPage < lastPage ? pageHref(currentPage + 1) : undefined} aria-disabled={currentPage === lastPage ? 'true' : undefined}>下一页 →</a></nav>}
+    <dialog class="lightbox" data-lightbox aria-label="照片大图">
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="关闭大图">关闭 ×</button>
+      <figure><img data-lightbox-image alt="" /><figcaption data-lightbox-caption></figcaption></figure>
+    </dialog>
+    <script>
+      const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+      const dialogImage = dialog?.querySelector<HTMLImageElement>('[data-lightbox-image]');
+      const caption = dialog?.querySelector<HTMLElement>('[data-lightbox-caption]');
+      document.querySelectorAll<HTMLButtonElement>('[data-gallery-open]').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (!dialog || !dialogImage) return;
+          dialogImage.src = button.dataset.full ?? '';
+          dialogImage.alt = button.dataset.alt ?? '';
+          if (caption) caption.textContent = button.dataset.title || button.dataset.alt || '';
+          dialog.showModal();
+        });
+      });
+      dialog?.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+      dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+      dialog?.addEventListener('close', () => { if (dialogImage) dialogImage.removeAttribute('src'); });
+    </script>
+  </>
+) : <div class="gallery-empty"><span class="empty-mark" aria-hidden="true">✳</span><p>这一组照片尚未加入网站。</p><small>相册框架已经就位，精选完成后会在这里按顺序呈现。</small></div>}

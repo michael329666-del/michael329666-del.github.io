@@ -1,0 +1,17 @@
+---
+import type { Collection } from '../data/portfolio';
+interface Props {
+  collections: Collection[];
+  kind: 'destinations' | 'categories';
+}
+const { collections, kind } = Astro.props;
+---
+<div class="collection-grid">
+  {collections.map((item, index) => (
+    <a class="collection-card" href={`/${kind}/${item.slug}/`}>
+      <div class:list={['collection-art', `art-${item.accent}`]} aria-hidden="true"><span class="art-index">{String(index + 1).padStart(2, '0')}</span><span class="art-line"></span><span class="art-placeholder">PHOTO ARCHIVE</span></div>
+      <div class="collection-meta"><div><span class="eyebrow">{item.english}</span><h2>{item.name}</h2></div><span class="card-arrow" aria-hidden="true">↗</span></div>
+      <p>{item.note}</p>
+    </a>
+  ))}
+</div>

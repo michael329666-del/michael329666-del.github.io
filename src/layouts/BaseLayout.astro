@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: 'selected' | 'destinations' | 'categories' | 'about';
+}
+
+const { title, description, active } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f1ede5" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Michael Wang" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至正文</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Michael Wang 首页">
+        <span class="brand-name">Michael Wang</span>
+        <span class="brand-signal"><i aria-hidden="true"></i>Starboy / Signal 001</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button><span>菜单</span><span class="menu-lines" aria-hidden="true"></span></button>
+      <nav id="site-navigation" class="site-nav" aria-label="主导航" data-navigation>
+        <a href="/" aria-current={active === 'selected' ? 'page' : undefined}>精选</a>
+        <a href="/destinations/" aria-current={active === 'destinations' ? 'page' : undefined}>目的地</a>
+        <a href="/categories/" aria-current={active === 'categories' ? 'page' : undefined}>题材</a>
+        <a href="/about/" aria-current={active === 'about' ? 'page' : undefined}>关于我</a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer"><span>© {new Date().getFullYear()} Michael Wang</span><span>Starboy / Signal 001</span><a href="#main">返回顶部 ↑</a></footer>
+    <script>
+      const button = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+      const navigation = document.querySelector<HTMLElement>('[data-navigation]');
+      button?.addEventListener('click', () => {
+        const open = button.getAttribute('aria-expanded') !== 'true';
+        button.setAttribute('aria-expanded', String(open));
+        navigation?.classList.toggle('is-open', open);
+      });
+      navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        button?.setAttribute('aria-expanded', 'false');
+        navigation.classList.remove('is-open');
+      }));
+      const header = document.querySelector<HTMLElement>('[data-header]');
+      const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 20);
+      addEventListener('scroll', syncHeader, { passive: true });
+      syncHeader();
+    </script>
+  </body>
+</html>

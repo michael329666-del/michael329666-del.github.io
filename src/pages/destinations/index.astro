@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CollectionIndex from '../../components/CollectionIndex.astro';
+import { destinations } from '../../data/portfolio';
+---
+<BaseLayout title="目的地 — Michael Wang" description="沿着 Michael Wang 的旅途浏览摄影故事。" active="destinations"><div class="page-wrap"><header class="page-heading"><span class="eyebrow">02 / PLACES</span><h1>去过的地方，<br /><em>留下的画面。</em></h1><p>每一个地点都是一组完整的记忆。选择一座城市或一次旅程，继续往下看。</p></header><CollectionIndex collections={destinations} kind="destinations" /></div></BaseLayout>

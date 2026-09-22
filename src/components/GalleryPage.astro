@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Gallery from './Gallery.astro';
+import type { Collection, Photo } from '../data/portfolio';
+interface Props {
+  collection: Collection;
+  kind: 'destinations' | 'categories';
+  photos: Photo[];
+  currentPage: number;
+  lastPage: number;
+  total: number;
+}
+const { collection, kind, photos, currentPage, lastPage, total } = Astro.props;
+const basePath = `/${kind}/${collection.slug}/`;
+const parent = kind === 'destinations' ? '目的地' : '题材';
+---
+<BaseLayout title={`${collection.name} — Michael Wang`} description={collection.note} active={kind}>
+  <div class="page-wrap">
+    <div class="breadcrumbs"><a href={`/${kind}/`}>← 返回{parent}</a><span>/</span><span>{collection.english}</span></div>
+    <header class="gallery-heading"><div><span class="eyebrow">{parent} / {collection.english}</span><h1>{collection.name}</h1></div><p>{collection.note}</p></header>
+    <div class="gallery-toolbar"><span>PHOTO ARCHIVE</span><span>{total > 0 ? `${total} 张照片` : '等待精选照片'}</span></div>
+    <Gallery {photos} {currentPage} {lastPage} {basePath} />
+  </div>
+</BaseLayout>

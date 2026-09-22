@@ -1,278 +1,50 @@
 ---
-import '../styles/global.css';
-
-const series = [
-	{
-		number: '01',
-		title: 'City',
-		chinese: '城市',
-		detail: 'Temporary visual · replace with your series',
-		kind: 'image',
-		className: 'series-featured',
-	},
-	{
-		number: '02',
-		title: 'Landscape',
-		chinese: '风景',
-		detail: 'Photo slot · 8–12 photographs',
-		kind: 'slot',
-		className: 'series-landscape',
-	},
-	{
-		number: '03',
-		title: 'Motorsport',
-		chinese: '赛车',
-		detail: 'Photo slot · 8–12 photographs',
-		kind: 'slot',
-		className: 'series-motorsport',
-	},
-	{
-		number: '04',
-		title: 'Portrait',
-		chinese: '人像',
-		detail: 'Photo slot · 8–12 photographs',
-		kind: 'slot',
-		className: 'series-portrait',
-	},
-];
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { photos } from '../data/portfolio';
+import Gallery from '../components/Gallery.astro';
+const selected = photos.filter((photo) => photo.featured);
 ---
-
-<!doctype html>
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#f1ede5" />
-		<meta
-			name="description"
-			content="Michael Wang 的个人摄影与视觉档案。Starboy 是贯穿作品的信号与署名。"
-		/>
-		<meta name="author" content="Michael Wang" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Michael Wang — Photography" />
-		<meta
-			property="og:description"
-			content="A personal archive of photography and visual notes, transmitted under the Starboy signal."
-		/>
-		<meta property="og:url" content="https://michael329666-del.github.io/" />
-		<meta property="og:image" content="https://michael329666-del.github.io/og.png" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Michael Wang — Starboy Signal 001" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="https://michael329666-del.github.io/og.png" />
-		<link rel="canonical" href="https://michael329666-del.github.io/" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<link rel="preload" as="image" href="/images/hero-demo.webp" type="image/webp" />
-		<title>Michael Wang — Photography / Starboy Signal</title>
-	</head>
-	<body>
-		<a class="skip-link" href="#main">Skip to content</a>
-
-		<header class="site-header" data-header>
-			<a class="brand" href="#top" aria-label="Michael Wang 首页">
-				<span class="brand-signal"><i aria-hidden="true"></i>Starboy</span>
-				<span class="brand-name">Michael Wang</span>
-			</a>
-			<button
-				class="menu-button"
-				type="button"
-				aria-expanded="false"
-				aria-controls="site-navigation"
-				data-menu-button
-			>
-				<span>Menu</span>
-				<i aria-hidden="true"></i>
-			</button>
-			<nav id="site-navigation" class="site-nav" aria-label="主导航" data-navigation>
-				<a href="#work">Work</a>
-				<a href="#about">About</a>
-				<a href="#contact">Contact</a>
-				<span class="nav-index">MW / 2026</span>
-			</nav>
-		</header>
-
-		<main id="main">
-			<section id="top" class="hero" aria-labelledby="hero-title">
-				<div class="hero-grid">
-					<div class="hero-copy">
-						<p class="signal-tag">
-							<span class="signal-dot" aria-hidden="true"></span>
-							<span>Starboy</span>
-							<small>Signal 001</small>
-						</p>
-						<p class="hero-kicker">Independent visual archive · 2026</p>
-						<h1 id="hero-title">
-							<span>Michael</span>
-							<span>Wang</span>
-						</h1>
-						<div class="hero-intro">
-							<p>Photography &amp; visual notes<br />摄影与个人视觉档案</p>
-							<a class="text-link" href="#work">View selected work <span aria-hidden="true">↓</span></a>
-						</div>
-					</div>
-
-					<figure class="hero-media">
-						<div class="hero-image-frame">
-							<img
-								src="/images/hero-demo.webp"
-								alt="临时示例：雨后夜晚的城市街道"
-								width="1672"
-								height="941"
-								fetchpriority="high"
-								decoding="async"
-							/>
-						</div>
-						<figcaption>
-							<span>Temporary visual — your photograph will replace this image</span>
-							<span>Field note / 2026</span>
-						</figcaption>
-					</figure>
-
-					<p class="hero-coordinate">40°47′N / 77°51′W</p>
-				</div>
-			</section>
-
-			<section id="work" class="section work-section" aria-labelledby="work-title">
-				<div class="section-heading reveal">
-					<p class="section-index">Signal / 01</p>
-					<div>
-						<h2 id="work-title">Stories held<br />in light.</h2>
-						<p class="section-intro">
-							The first edition is structured for four photographic series. These demo slots will be
-							replaced with your own titles, images and field notes.
-						</p>
-					</div>
-				</div>
-
-				<div class="series-grid">
-					{series.map((item) => (
-						<article class:list={['series-card', item.className, 'reveal']}>
-							{item.kind === 'image' ? (
-								<button
-									class="series-visual image-button"
-									type="button"
-									data-lightbox-open
-									aria-label="打开临时示例图片"
-								>
-									<img
-										src="/images/hero-demo.webp"
-										alt="临时示例：雨后夜晚的城市街道"
-										width="1672"
-										height="941"
-										loading="lazy"
-										decoding="async"
-									/>
-									<span class="view-label">View demo image</span>
-								</button>
-							) : (
-								<div class="series-visual empty-slot" aria-label={item.title + ' 照片占位'}>
-									<span>Photo slot</span>
-									<i aria-hidden="true"></i>
-								</div>
-							)}
-							<div class="series-meta">
-								<span class="series-number">{item.number}</span>
-								<h3>{item.title} <small>{item.chinese}</small></h3>
-								<p>{item.detail}</p>
-							</div>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<section id="about" class="section about-section" aria-labelledby="about-title">
-				<div class="about-rule" aria-hidden="true"></div>
-				<p class="section-index reveal">Signal / 02</p>
-				<div class="about-grid">
-					<h2 id="about-title" class="reveal">The person behind<br />the signal.</h2>
-					<div class="about-copy reveal">
-						<p class="lead">
-							Michael Wang is a photographer building a personal archive around light, movement and the
-							feeling of passing through a place.
-						</p>
-						<p>
-							Starboy is not a second name. It is the signal running through the archive — a small mark
-							for instinct, curiosity and the moments worth keeping.
-						</p>
-						<dl class="about-details">
-							<div><dt>Name</dt><dd>Michael Wang</dd></div>
-							<div><dt>Signal</dt><dd>Starboy / Archive 001</dd></div>
-							<div><dt>Online</dt><dd>michael329666-del.github.io</dd></div>
-						</dl>
-					</div>
-				</div>
-			</section>
-
-			<section id="contact" class="section contact-section" aria-labelledby="contact-title">
-				<p class="section-index reveal">Signal / 03</p>
-				<div class="contact-main reveal">
-					<p>For portraits, editorials<br />and thoughtful collaborations.</p>
-					<h2 id="contact-title">Let’s make<br />something lasting.</h2>
-				</div>
-				<div class="contact-footer reveal">
-					<p>联系邮箱和社交平台将在正式发布前添加。</p>
-					<span class="planned-email">Email / Instagram <small>coming soon</small></span>
-				</div>
-			</section>
-		</main>
-
-		<footer class="site-footer">
-			<p>© 2026 Michael Wang</p>
-			<p><span aria-hidden="true">●</span> Starboy / Signal 001</p>
-			<a href="#top">Back to top ↑</a>
-		</footer>
-
-		<dialog class="lightbox" data-lightbox>
-			<button class="lightbox-close" type="button" data-lightbox-close aria-label="关闭大图">Close ×</button>
-			<figure>
-				<img src="/images/hero-demo.webp" alt="临时示例：雨后夜晚的城市街道" />
-				<figcaption>Temporary visual — replace with your photograph</figcaption>
-			</figure>
-		</dialog>
-
-		<script>
-			const menuButton = document.querySelector('[data-menu-button]');
-			const navigation = document.querySelector('[data-navigation]');
-			const header = document.querySelector('[data-header]');
-
-			menuButton?.addEventListener('click', () => {
-				const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-				menuButton.setAttribute('aria-expanded', String(!isOpen));
-				navigation?.classList.toggle('is-open', !isOpen);
-			});
-
-			navigation?.querySelectorAll('a').forEach((link) => {
-				link.addEventListener('click', () => {
-					menuButton?.setAttribute('aria-expanded', 'false');
-					navigation.classList.remove('is-open');
-				});
-			});
-
-			const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 32);
-			window.addEventListener('scroll', syncHeader, { passive: true });
-			syncHeader();
-
-			const lightbox = document.querySelector('[data-lightbox]');
-			document.querySelector('[data-lightbox-open]')?.addEventListener('click', () => {
-				if (lightbox instanceof HTMLDialogElement) lightbox.showModal();
-			});
-			document.querySelector('[data-lightbox-close]')?.addEventListener('click', () => {
-				if (lightbox instanceof HTMLDialogElement) lightbox.close();
-			});
-			lightbox?.addEventListener('click', (event) => {
-				if (event.target === lightbox && lightbox instanceof HTMLDialogElement) lightbox.close();
-			});
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('is-visible');
-						observer.unobserve(entry.target);
-					}
-				});
-			}, { threshold: 0.12 });
-			document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-		</script>
-	</body>
-</html>
+<BaseLayout title="精选作品 — Michael Wang" description="Michael Wang 的精选摄影作品与个人视觉档案。" active="selected">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-intro"><span class="eyebrow signal-label"><i aria-hidden="true"></i> STARBOY / SIGNAL 001</span><h1 id="home-title">Selected<br /><em>works.</em></h1><p>一些值得留下的瞬间。<br />摄影与个人视觉档案 / Michael Wang</p><a class="text-link" href="#selected">向下浏览 <span aria-hidden="true">↓</span></a></div>
+    <div class="feature-stage">
+      {selected.length > 0 ? <div class="feature-slides">{selected.map((photo, index) => <img src={photo.src} alt={photo.alt} class:list={['feature-slide', index === 0 && 'is-active']} data-feature-slide />)}</div> : <div class="feature-placeholder"><span class="feature-cross" aria-hidden="true">✳</span><span>SELECTED PHOTOGRAPHS<br />COMING SOON</span></div>}
+      <div class="feature-bottom"><span>001 — A PERSONAL ARCHIVE</span>{selected.length > 1 && <div class="feature-controls"><button type="button" data-feature-prev aria-label="上一张照片">←</button><span data-feature-count>01 / {String(selected.length).padStart(2, '0')}</span><button type="button" data-feature-next aria-label="下一张照片">→</button><button type="button" data-feature-toggle aria-label="暂停轮播" aria-pressed="false">暂停</button></div>}</div>
+    </div>
+  </section>
+  <section id="selected" class="page-wrap selected-section"><div class="section-lead"><span class="eyebrow">01 / SELECTED</span><div><h2>精选照片</h2><p>先从这些画面开始认识我的摄影。这里将呈现跨越不同地点与题材的精选作品。</p></div></div><Gallery photos={selected} currentPage={1} lastPage={1} basePath="/" /></section>
+  <section class="home-next"><div><span class="eyebrow">CONTINUE EXPLORING</span><h2>沿着照片，继续走。</h2></div><div class="next-links"><a href="/destinations/">按目的地探索 <span aria-hidden="true">↗</span></a><a href="/categories/">按题材探索 <span aria-hidden="true">↗</span></a></div></section>
+  <script>
+    const slides = [...document.querySelectorAll<HTMLElement>('[data-feature-slide]')];
+    const count = document.querySelector<HTMLElement>('[data-feature-count]');
+    let current = 0;
+    function show(index: number) {
+      if (!slides.length) return;
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
+      if (count) count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    }
+    document.querySelector('[data-feature-prev]')?.addEventListener('click', () => show(current - 1));
+    document.querySelector('[data-feature-next]')?.addEventListener('click', () => show(current + 1));
+    const toggle = document.querySelector<HTMLButtonElement>('[data-feature-toggle]');
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const start = () => { if (slides.length > 1 && !timer) timer = setInterval(() => show(current + 1), 6000); };
+    const stop = () => { if (timer) clearInterval(timer); timer = undefined; };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (toggle) { toggle.textContent = '播放'; toggle.setAttribute('aria-label', '开始轮播'); toggle.setAttribute('aria-pressed', 'true'); }
+    } else start();
+    toggle?.addEventListener('click', () => {
+      if (timer) {
+        stop();
+        toggle.textContent = '播放';
+        toggle.setAttribute('aria-label', '开始轮播');
+        toggle.setAttribute('aria-pressed', 'true');
+      } else {
+        start();
+        toggle.textContent = '暂停';
+        toggle.setAttribute('aria-label', '暂停轮播');
+        toggle.setAttribute('aria-pressed', 'false');
+      }
+    });
+  </script>
+</BaseLayout>
