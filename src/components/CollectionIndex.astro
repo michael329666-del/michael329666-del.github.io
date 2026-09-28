@@ -10,8 +10,7 @@ const { collections, kind } = Astro.props;
   {collections.map((item, index) => (
     <a class="collection-card" href={`/${kind}/${item.slug}/`}>
       <div class:list={['collection-art', `art-${item.accent}`]} aria-hidden="true"><span class="art-index">{String(index + 1).padStart(2, '0')}</span><span class="art-line"></span><span class="art-placeholder">PHOTO ARCHIVE</span></div>
-      <div class="collection-meta"><div><span class="eyebrow">{item.english}</span><h2>{item.name}</h2></div><span class="card-arrow" aria-hidden="true">↗</span></div>
-      <p>{item.note}</p>
+      <div class="collection-meta"><div><h2>{item.english}</h2><span class="zh-support" lang="zh-CN">{item.name}</span></div><span class="card-arrow" aria-hidden="true">↗</span></div>
     </a>
   ))}
 </div>

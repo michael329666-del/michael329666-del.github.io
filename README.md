@@ -1,6 +1,8 @@
 # Michael Wang Photography
 
-Michael Wang 的 Astro 摄影作品集框架。目前没有加入摄影作品，也没有提交公开发布。
+Michael Wang 的 Astro 摄影作品集框架，已发布到 [GitHub Pages](https://michael329666-del.github.io/)。目前没有加入摄影作品。
+
+页面采用中英双语：导航先中文后英文，目的地与题材以英文标题为主、中文副标题为辅；说明文字保持简短。
 
 ## 页面
 

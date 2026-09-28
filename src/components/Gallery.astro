@@ -13,15 +13,15 @@ const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${pa
   <>
     <div class="photo-grid">
       {photos.map((photo, index) => (
-        <button class="photo-card" type="button" data-gallery-open data-full={photo.src} data-alt={photo.alt} data-title={photo.title ?? ''} aria-label={`查看大图：${photo.alt}`}>
+        <button class="photo-card" type="button" data-gallery-open data-full={photo.src} data-alt={photo.alt} data-title={photo.title ?? ''} aria-label={`View photograph: ${photo.alt}`}>
           <img src={photo.thumb} alt={photo.alt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
           <span class="photo-caption">{photo.title ?? photo.alt} <span aria-hidden="true">↗</span></span>
         </button>
       ))}
     </div>
-    {lastPage > 1 && <nav class="pagination" aria-label="照片分页"><a href={currentPage > 1 ? pageHref(currentPage - 1) : undefined} aria-disabled={currentPage === 1 ? 'true' : undefined}>← 上一页</a><span>{currentPage} / {lastPage}</span><a href={currentPage < lastPage ? pageHref(currentPage + 1) : undefined} aria-disabled={currentPage === lastPage ? 'true' : undefined}>下一页 →</a></nav>}
-    <dialog class="lightbox" data-lightbox aria-label="照片大图">
-      <button class="lightbox-close" type="button" data-lightbox-close aria-label="关闭大图">关闭 ×</button>
+    {lastPage > 1 && <nav class="pagination" aria-label="Photo pagination"><a href={currentPage > 1 ? pageHref(currentPage - 1) : undefined} aria-disabled={currentPage === 1 ? 'true' : undefined}>← Previous / <span lang="zh-CN">上一页</span></a><span>{currentPage} / {lastPage}</span><a href={currentPage < lastPage ? pageHref(currentPage + 1) : undefined} aria-disabled={currentPage === lastPage ? 'true' : undefined}>Next / <span lang="zh-CN">下一页</span> →</a></nav>}
+    <dialog class="lightbox" data-lightbox aria-label="Full-size photograph">
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close photograph">Close / <span lang="zh-CN">关闭</span> ×</button>
       <figure><img data-lightbox-image alt="" /><figcaption data-lightbox-caption></figcaption></figure>
     </dialog>
     <script>
@@ -42,4 +42,4 @@ const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${pa
       dialog?.addEventListener('close', () => { if (dialogImage) dialogImage.removeAttribute('src'); });
     </script>
   </>
-) : <div class="gallery-empty"><span class="empty-mark" aria-hidden="true">✳</span><p>这一组照片尚未加入网站。</p><small>相册框架已经就位，精选完成后会在这里按顺序呈现。</small></div>}
+) : <div class="gallery-empty"><span class="empty-mark" aria-hidden="true">✳</span><p>Photographs to come</p></div>}
