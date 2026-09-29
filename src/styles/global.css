@@ -115,15 +115,6 @@ body:has(.home-hero), body:has(.destinations-page) { background: var(--paper); }
 .lightbox img { max-width: 100%; max-height: calc(100vh - 9rem); object-fit: contain; }
 .lightbox figcaption { margin-top: .75rem; font-size: .7rem; }
 .lightbox-close { position: absolute; top: 1rem; right: var(--gutter); padding: .5rem; border: 0; background: none; color: white; cursor: pointer; }
-body:has(.about-page) { background: var(--stone); }
-.about-layout { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); gap: clamp(3rem, 8vw, 9rem); align-items: center; }
-.about-art { display: grid; place-content: center; min-height: 34rem; background: linear-gradient(145deg,#cab9ad,#93857b); color: white; font-size: .65rem; font-weight: 700; letter-spacing: .16em; }
-.about-text h1 { margin: 1.4rem 0 0; font-family: Georgia, "Times New Roman", "Songti SC", serif; font-size: clamp(4rem, 7.5vw, 8rem); font-weight: 400; letter-spacing: -.08em; line-height: .95; }
-.about-text .zh-support { margin: 1.5rem 0 2.5rem; }
-.about-text .short-line { margin: 0 0 3rem; color: var(--muted); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.about-rule { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); font-size: .7rem; letter-spacing: .08em; }
-.about-rule span { color: var(--signal); }
-.about-rule strong { font-weight: 500; }
 @media (max-width: 1060px) {
   html { scroll-padding-top: 8rem; }
   .site-header { align-items: start; flex-direction: column; gap: .7rem; }
@@ -133,10 +124,9 @@ body:has(.about-page) { background: var(--stone); }
 @media (max-width: 900px) {
   .home-hero { grid-template-columns: 1fr; min-height: auto; gap: 3.5rem; }
   .feature-stage { height: 72vw; min-height: 26rem; }
-  .section-lead, .about-layout { grid-template-columns: 1fr; }
+  .section-lead { grid-template-columns: 1fr; }
   .home-next { flex-direction: column; }
   .next-links { min-width: 0; }
-  .about-art { min-height: 27rem; }
 }
 @media (max-width: 620px) {
   .site-header { min-height: auto; padding-block: 1rem; }
