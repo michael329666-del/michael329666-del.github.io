@@ -53,7 +53,6 @@ const first = photos[0];
     const full = stage.querySelector<HTMLImageElement>('[data-feature-full]');
     const fullCaption = stage.querySelector<HTMLElement>('[data-feature-full-caption]');
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
-    const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
     let current = 0;
     let requested = 0;
     let activeFrame = 0;
@@ -61,12 +60,11 @@ const first = photos[0];
     let userPaused = motion.matches;
     let visible = true;
     let focused = false;
-    let hovering = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
     function stop() { clearTimeout(timer); timer = undefined; }
     function schedule() {
       stop();
-      if (photos.length > 1 && !userPaused && visible && !focused && !hovering && !document.hidden && !dialog?.open) {
+      if (photos.length > 1 && !userPaused && visible && !focused && !document.hidden && !dialog?.open) {
         timer = setTimeout(() => void show(requested + 1), 3000);
       }
     }
@@ -116,7 +114,7 @@ const first = photos[0];
     stage.querySelector('[data-feature-next]')?.addEventListener('click', () => void show(requested + 1, true));
     toggle?.addEventListener('click', () => {
       userPaused = !userPaused;
-      if (!userPaused) { focused = false; hovering = false; }
+      if (!userPaused) focused = false;
       updateToggle();
       schedule();
     });
@@ -130,8 +128,6 @@ const first = photos[0];
     });
     toggleWrap?.addEventListener('pointerenter', () => toggleWrap.removeAttribute('data-tip-dismissed'));
     toggle?.addEventListener('focus', () => toggleWrap?.removeAttribute('data-tip-dismissed'));
-    stage.addEventListener('pointerenter', () => { hovering = finePointer.matches; schedule(); });
-    stage.addEventListener('pointerleave', () => { hovering = false; schedule(); });
     stage.addEventListener('focusin', () => { focused = true; schedule(); });
     stage.addEventListener('focusout', (event) => { focused = event.relatedTarget instanceof Node && stage.contains(event.relatedTarget); schedule(); });
     document.addEventListener('visibilitychange', schedule);
@@ -179,7 +175,7 @@ const first = photos[0];
   .feature-stage { display: flex; flex-direction: column; height: clamp(32rem, 68svh, 41.25rem); min-height: 0; background: #e3dcd2; }
   .feature-open { position: relative; flex: 1; min-height: 0; padding: clamp(.75rem, 1.5vw, 1.35rem); border: 0; background: none; cursor: zoom-in; touch-action: pan-y; }
   .feature-canvas { position: relative; display: block; width: 100%; height: 100%; }
-  .feature-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .8s ease; }
+  .feature-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 1.6s cubic-bezier(.45, 0, .55, 1); }
   .feature-frame.is-active { opacity: 1; }
   .feature-expand { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: rgba(25,23,21,.7); color: white; font-size: 1rem; opacity: 0; transition: opacity .2s; }
   .feature-open:hover .feature-expand, .feature-open:focus-visible .feature-expand { opacity: 1; }
