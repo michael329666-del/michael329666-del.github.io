@@ -18,7 +18,13 @@ const first = photos[0];
       <button type="button" data-feature-prev aria-label="Previous photograph / 上一张">←</button>
       <span class="feature-count" data-feature-count>01 / {String(photos.length).padStart(2, '0')}</span>
       <button type="button" data-feature-next aria-label="Next photograph / 下一张">→</button>
-      <button class="feature-toggle" type="button" data-feature-toggle aria-label="Pause slideshow / 暂停轮播" aria-pressed="false">Ⅱ</button>
+      <span class="feature-toggle-wrap" data-feature-toggle-wrap>
+        <button class="feature-toggle" type="button" data-feature-toggle aria-label="Pause slideshow / 暂停轮播" aria-describedby="slideshow-playback-tip" aria-pressed="false"><span data-feature-toggle-icon aria-hidden="true">Ⅱ</span></button>
+        <span class="feature-tooltip" id="slideshow-playback-tip" role="tooltip">
+          <span data-feature-tip-zh lang="zh-CN">自动播放 · 点击暂停</span>
+          <span data-feature-tip-en lang="en">Autoplay on · Pause</span>
+        </span>
+      </span>
     </div>}
   </div>
   <span class="feature-status" data-feature-status role="status" aria-live="polite"></span>
@@ -38,6 +44,10 @@ const first = photos[0];
     const caption = stage.querySelector<HTMLElement>('[data-feature-caption]');
     const open = stage.querySelector<HTMLButtonElement>('[data-feature-open]');
     const toggle = stage.querySelector<HTMLButtonElement>('[data-feature-toggle]');
+    const toggleIcon = stage.querySelector<HTMLElement>('[data-feature-toggle-icon]');
+    const toggleWrap = stage.querySelector<HTMLElement>('[data-feature-toggle-wrap]');
+    const tipZh = stage.querySelector<HTMLElement>('[data-feature-tip-zh]');
+    const tipEn = stage.querySelector<HTMLElement>('[data-feature-tip-en]');
     const status = stage.querySelector<HTMLElement>('[data-feature-status]');
     const dialog = stage.querySelector<HTMLDialogElement>('[data-feature-dialog]');
     const full = stage.querySelector<HTMLImageElement>('[data-feature-full]');
@@ -62,7 +72,9 @@ const first = photos[0];
     }
     function updateToggle() {
       if (!toggle) return;
-      toggle.textContent = userPaused ? '▶' : 'Ⅱ';
+      if (toggleIcon) toggleIcon.textContent = userPaused ? '▶' : 'Ⅱ';
+      if (tipZh) tipZh.textContent = userPaused ? '已暂停 · 点击播放' : '自动播放 · 点击暂停';
+      if (tipEn) tipEn.textContent = userPaused ? 'Paused · Play' : 'Autoplay on · Pause';
       toggle.setAttribute('aria-label', userPaused ? 'Play slideshow / 播放轮播' : 'Pause slideshow / 暂停轮播');
       toggle.setAttribute('aria-pressed', String(userPaused));
     }
@@ -110,11 +122,14 @@ const first = photos[0];
     });
     stage.addEventListener('keydown', (event) => {
       if (dialog?.open || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      if (event.key === 'Escape') toggleWrap?.setAttribute('data-tip-dismissed', '');
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         event.preventDefault();
         void show(requested + (event.key === 'ArrowLeft' ? -1 : 1), true);
       }
     });
+    toggleWrap?.addEventListener('pointerenter', () => toggleWrap.removeAttribute('data-tip-dismissed'));
+    toggle?.addEventListener('focus', () => toggleWrap?.removeAttribute('data-tip-dismissed'));
     stage.addEventListener('pointerenter', () => { hovering = finePointer.matches; schedule(); });
     stage.addEventListener('pointerleave', () => { hovering = false; schedule(); });
     stage.addEventListener('focusin', () => { focused = true; schedule(); });
@@ -174,7 +189,12 @@ const first = photos[0];
   .feature-controls button { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; border: 1px solid transparent; transition: border-color .2s; }
   .feature-controls button:hover, .feature-controls button:focus-visible { border-color: #d8cfc3; }
   .feature-count { padding-inline: .2rem; white-space: nowrap; font-size: .61rem; font-variant-numeric: tabular-nums; letter-spacing: .1em; }
-  .feature-controls .feature-toggle { margin-left: .35rem; border-left-color: rgba(255,255,255,.2); font-size: .8rem; }
+  .feature-toggle-wrap { position: relative; display: block; margin-left: .35rem; }
+  .feature-controls .feature-toggle { border-left-color: rgba(255,255,255,.2); font-size: .8rem; }
+  .feature-tooltip { position: absolute; right: 0; bottom: calc(100% + .65rem); z-index: 5; display: grid; gap: .2rem; width: max-content; padding: .65rem .85rem; border: 1px solid rgba(216,207,195,.35); border-radius: .25rem; background: var(--ink); color: var(--paper-light); box-shadow: 0 .3rem 1rem rgba(0,0,0,.16); font-size: .69rem; font-weight: 400; letter-spacing: .02em; line-height: 1.5; visibility: hidden; opacity: 0; transform: translateY(.2rem); transition: opacity .15s ease, transform .15s ease, visibility .15s; }
+  .feature-tooltip::after { position: absolute; right: 0; bottom: -.7rem; width: 100%; height: .7rem; content: ""; }
+  .feature-tooltip [lang="en"] { color: var(--stone); font-size: .59rem; }
+  .feature-toggle-wrap:not([data-tip-dismissed]):is(:hover, :focus-within) .feature-tooltip { visibility: visible; opacity: 1; transform: none; }
   .feature-status { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   @media (max-width: 900px) { .feature-stage { height: auto; aspect-ratio: 4 / 5; min-height: 24rem; } }
   @media (max-width: 620px) {
