@@ -21,6 +21,18 @@ const label = kind === 'destinations' ? '02 / Destination' : '03 / Subject';
     <div class="breadcrumbs"><a href={`/${kind}/`}>← <span lang="zh-CN">返回{parent}</span> / {parentEnglish}</a><span>/</span><span>{collection.english}</span></div>
     <header class="gallery-heading"><div><span class="eyebrow">{label}</span><h1>{collection.english}</h1><span class="zh-support" lang="zh-CN">{collection.name}</span></div></header>
     <div class="gallery-toolbar"><span>PHOTO ARCHIVE</span>{total > 0 && <span>{total} PHOTOGRAPHS</span>}</div>
-    <Gallery {photos} {currentPage} {lastPage} {basePath} />
+    <div class="album-gallery"><Gallery {photos} {currentPage} {lastPage} {basePath} /></div>
   </div>
 </BaseLayout>
+
+<style>
+  .album-gallery :global(.photo-grid) { display: block; columns: 3; column-gap: clamp(1rem, 2.5vw, 2rem); }
+  .album-gallery :global(.photo-card) { display: inline-block; margin-bottom: clamp(2rem, 3.5vw, 3.5rem); break-inside: avoid; }
+  .album-gallery :global(.photo-card img) { height: auto; aspect-ratio: auto; }
+  @media (max-width: 900px) {
+    .album-gallery :global(.photo-grid) { columns: 2; }
+  }
+  @media (max-width: 620px) {
+    .album-gallery :global(.photo-grid) { column-gap: .85rem; }
+  }
+</style>

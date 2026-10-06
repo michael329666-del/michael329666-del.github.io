@@ -1,16 +1,32 @@
 ---
 import type { Collection } from '../data/portfolio';
+import { photosFor } from '../data/portfolio';
 interface Props {
   collections: Collection[];
   kind: 'destinations' | 'categories';
 }
 const { collections, kind } = Astro.props;
+const cards = collections.map((item) => {
+  const album = photosFor(kind, item.slug);
+  return { item, count: album.length, cover: album.find((photo) => photo.id === item.coverId) ?? album[0] };
+});
 ---
 <div class="collection-grid">
-  {collections.map((item, index) => (
+  {cards.map(({ item, count, cover }, index) => (
     <a class="collection-card" href={`/${kind}/${item.slug}/`}>
-      <div class:list={['collection-art', `art-${item.accent}`]} aria-hidden="true"><span class="art-index">{String(index + 1).padStart(2, '0')}</span><span class="art-line"></span><span class="art-placeholder">PHOTO ARCHIVE</span></div>
+      <div class:list={['collection-art', `art-${item.accent}`, { 'has-photo': cover }]} aria-hidden="true">
+        {cover && <img class="collection-cover" src={cover.thumb} alt="" width={cover.width} height={cover.height} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />}
+        <span class="art-index">{String(index + 1).padStart(2, '0')}</span>
+        {!cover && <span class="art-line"></span>}
+        <span class="art-placeholder">{count > 0 ? `${count} PHOTOGRAPHS` : 'PHOTO ARCHIVE'}</span>
+      </div>
       <div class="collection-meta"><div><h2>{item.english}</h2><span class="zh-support" lang="zh-CN">{item.name}</span></div><span class="card-arrow" aria-hidden="true">↗</span></div>
     </a>
   ))}
 </div>
+
+<style>
+  .collection-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .has-photo::after { inset: 0; width: 100%; height: 100%; aspect-ratio: auto; border: 0; border-radius: 0; background: linear-gradient(180deg, rgba(0,0,0,.2), transparent 30%, transparent 65%, rgba(0,0,0,.38)); }
+  .has-photo .art-index, .has-photo .art-placeholder { color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+</style>
