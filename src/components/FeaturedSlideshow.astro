@@ -1,0 +1,188 @@
+---
+import type { GalleryPhoto } from '../data/portfolio';
+interface Props { photos: GalleryPhoto[] }
+const { photos } = Astro.props;
+const first = photos[0];
+---
+{first && <div class="feature-stage" data-feature-stage data-photos={JSON.stringify(photos)} role="region" aria-roledescription="carousel" aria-label="Selected photographs / 精选照片" tabindex="0">
+  <button class="feature-open" type="button" data-feature-open aria-label={`View photograph / 查看大图: ${first.alt}`}>
+    <span class="feature-canvas">
+      <img class="feature-frame is-active" data-feature-frame src={first.src} srcset={`${first.thumb} 900w, ${first.src} ${first.width}w`} sizes="(max-width: 900px) 90vw, 45vw" width={first.width} height={first.height} alt={first.alt} fetchpriority="high" decoding="async" />
+      <img class="feature-frame" data-feature-frame alt="" aria-hidden="true" decoding="async" />
+    </span>
+    <span class="feature-expand" aria-hidden="true">↗</span>
+  </button>
+  <div class="feature-bottom">
+    <span class="feature-caption" data-feature-caption>{first.title}</span>
+    {photos.length > 1 && <div class="feature-controls">
+      <button type="button" data-feature-prev aria-label="Previous photograph / 上一张">←</button>
+      <span class="feature-count" data-feature-count>01 / {String(photos.length).padStart(2, '0')}</span>
+      <button type="button" data-feature-next aria-label="Next photograph / 下一张">→</button>
+      <button class="feature-toggle" type="button" data-feature-toggle aria-label="Pause slideshow / 暂停轮播" aria-pressed="false">Ⅱ</button>
+    </div>}
+  </div>
+  <span class="feature-status" data-feature-status role="status" aria-live="polite"></span>
+  <dialog class="lightbox" data-feature-dialog aria-label="Full-size photograph / 照片大图">
+    <button class="lightbox-close" type="button" data-feature-close aria-label="Close photograph / 关闭大图">Close / <span lang="zh-CN">关闭</span> ×</button>
+    <figure><img data-feature-full alt="" /><figcaption data-feature-full-caption></figcaption></figure>
+  </dialog>
+</div>}
+
+<script>
+  import type { GalleryPhoto } from '../data/portfolio';
+  const stage = document.querySelector<HTMLElement>('[data-feature-stage]');
+  if (stage) {
+    const photos: GalleryPhoto[] = JSON.parse(stage.dataset.photos ?? '[]');
+    const frames = [...stage.querySelectorAll<HTMLImageElement>('[data-feature-frame]')];
+    const count = stage.querySelector<HTMLElement>('[data-feature-count]');
+    const caption = stage.querySelector<HTMLElement>('[data-feature-caption]');
+    const open = stage.querySelector<HTMLButtonElement>('[data-feature-open]');
+    const toggle = stage.querySelector<HTMLButtonElement>('[data-feature-toggle]');
+    const status = stage.querySelector<HTMLElement>('[data-feature-status]');
+    const dialog = stage.querySelector<HTMLDialogElement>('[data-feature-dialog]');
+    const full = stage.querySelector<HTMLImageElement>('[data-feature-full]');
+    const fullCaption = stage.querySelector<HTMLElement>('[data-feature-full-caption]');
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+    let current = 0;
+    let requested = 0;
+    let activeFrame = 0;
+    let requestVersion = 0;
+    let userPaused = motion.matches;
+    let visible = true;
+    let focused = false;
+    let hovering = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    function stop() { clearTimeout(timer); timer = undefined; }
+    function schedule() {
+      stop();
+      if (photos.length > 1 && !userPaused && visible && !focused && !hovering && !document.hidden && !dialog?.open) {
+        timer = setTimeout(() => void show(requested + 1), 6000);
+      }
+    }
+    function updateToggle() {
+      if (!toggle) return;
+      toggle.textContent = userPaused ? '▶' : 'Ⅱ';
+      toggle.setAttribute('aria-label', userPaused ? 'Play slideshow / 播放轮播' : 'Pause slideshow / 暂停轮播');
+      toggle.setAttribute('aria-pressed', String(userPaused));
+    }
+    async function show(index: number, manual = false) {
+      if (!photos.length) return;
+      stop();
+      requested = (index + photos.length) % photos.length;
+      const target = requested;
+      const version = ++requestVersion;
+      const photo = photos[target];
+      const nextFrame = 1 - activeFrame;
+      const frame = frames[nextFrame];
+      frame.srcset = `${photo.thumb} 900w, ${photo.src} ${photo.width}w`;
+      frame.sizes = '(max-width: 900px) 90vw, 45vw';
+      frame.src = photo.src;
+      frame.alt = photo.alt;
+      try { await frame.decode(); }
+      catch {
+        if (version === requestVersion) {
+          if (status) status.textContent = 'Photograph could not load / 照片加载失败';
+          schedule();
+        }
+        return;
+      }
+      if (version !== requestVersion) return;
+      frames.forEach((image, i) => {
+        image.classList.toggle('is-active', i === nextFrame);
+        image.setAttribute('aria-hidden', String(i !== nextFrame));
+      });
+      activeFrame = nextFrame;
+      current = target;
+      if (count) count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+      if (caption) caption.textContent = photo.title ?? '';
+      open?.setAttribute('aria-label', `View photograph / 查看大图: ${photo.alt}`);
+      if (manual && status) status.textContent = `${current + 1} / ${photos.length}: ${photo.title ?? photo.alt}`;
+      schedule();
+    }
+    stage.querySelector('[data-feature-prev]')?.addEventListener('click', () => void show(requested - 1, true));
+    stage.querySelector('[data-feature-next]')?.addEventListener('click', () => void show(requested + 1, true));
+    toggle?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      if (!userPaused) { focused = false; hovering = false; }
+      updateToggle();
+      schedule();
+    });
+    stage.addEventListener('keydown', (event) => {
+      if (dialog?.open || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        void show(requested + (event.key === 'ArrowLeft' ? -1 : 1), true);
+      }
+    });
+    stage.addEventListener('pointerenter', () => { hovering = finePointer.matches; schedule(); });
+    stage.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+    stage.addEventListener('focusin', () => { focused = true; schedule(); });
+    stage.addEventListener('focusout', (event) => { focused = event.relatedTarget instanceof Node && stage.contains(event.relatedTarget); schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+    motion.addEventListener('change', () => { if (motion.matches) userPaused = true; updateToggle(); schedule(); });
+    let touchStart: { x: number; y: number } | undefined;
+    let swiped = false;
+    open?.addEventListener('pointerdown', (event) => {
+      swiped = false;
+      if (event.pointerType === 'touch') touchStart = { x: event.clientX, y: event.clientY };
+    });
+    open?.addEventListener('pointerup', (event) => {
+      if (!touchStart) return;
+      const dx = event.clientX - touchStart.x;
+      const dy = event.clientY - touchStart.y;
+      touchStart = undefined;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        swiped = true;
+        void show(requested + (dx < 0 ? 1 : -1), true);
+      }
+    });
+    open?.addEventListener('pointercancel', () => { touchStart = undefined; });
+    open?.addEventListener('click', () => {
+      if (swiped) { swiped = false; return; }
+      if (!dialog || !full) return;
+      const photo = photos[current];
+      full.src = photo.src;
+      full.alt = photo.alt;
+      if (fullCaption) fullCaption.textContent = photo.title ?? '';
+      dialog.showModal();
+      schedule();
+    });
+    stage.querySelector('[data-feature-close]')?.addEventListener('click', () => dialog?.close());
+    dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+    dialog?.addEventListener('close', () => { full?.removeAttribute('src'); schedule(); });
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }, { threshold: 0.15 });
+    observer.observe(stage);
+    window.addEventListener('pagehide', () => { stop(); observer.disconnect(); });
+    window.addEventListener('pageshow', () => { observer.observe(stage); schedule(); });
+    updateToggle();
+    schedule();
+  }
+</script>
+
+<style>
+  .feature-stage { display: flex; flex-direction: column; height: clamp(32rem, 68svh, 41.25rem); min-height: 0; background: #e3dcd2; }
+  .feature-open { position: relative; flex: 1; min-height: 0; padding: clamp(.75rem, 1.5vw, 1.35rem); border: 0; background: none; cursor: zoom-in; touch-action: pan-y; }
+  .feature-canvas { position: relative; display: block; width: 100%; height: 100%; }
+  .feature-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .8s ease; }
+  .feature-frame.is-active { opacity: 1; }
+  .feature-expand { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: rgba(25,23,21,.7); color: white; font-size: 1rem; opacity: 0; transition: opacity .2s; }
+  .feature-open:hover .feature-expand, .feature-open:focus-visible .feature-expand { opacity: 1; }
+  .feature-bottom { position: static; flex: none; gap: .75rem; min-height: 4rem; padding: .4rem .7rem .4rem 1.2rem; background: var(--ink); }
+  .feature-caption { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .58rem; text-transform: uppercase; color: #d8cfc3; }
+  .feature-controls { flex: none; gap: .15rem; }
+  .feature-controls button { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; border: 1px solid transparent; transition: border-color .2s; }
+  .feature-controls button:hover, .feature-controls button:focus-visible { border-color: #d8cfc3; }
+  .feature-count { padding-inline: .2rem; white-space: nowrap; font-size: .61rem; font-variant-numeric: tabular-nums; letter-spacing: .1em; }
+  .feature-controls .feature-toggle { margin-left: .35rem; border-left-color: rgba(255,255,255,.2); font-size: .8rem; }
+  .feature-status { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 900px) { .feature-stage { height: auto; aspect-ratio: 4 / 5; min-height: 24rem; } }
+  @media (max-width: 620px) {
+    .feature-bottom { padding-left: .8rem; gap: .25rem; }
+    .feature-caption { font-size: .5rem; letter-spacing: .06em; }
+    .feature-controls { gap: 0; }
+    .feature-count { font-size: .55rem; }
+    .feature-expand { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .feature-frame { transition: none; } }
+</style>

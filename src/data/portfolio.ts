@@ -1,9 +1,14 @@
-export type Photo = {
+export type GalleryPhoto = {
   id: string;
   src: string;
   thumb: string;
   alt: string;
   title?: string;
+  width?: number;
+  height?: number;
+};
+
+export type Photo = GalleryPhoto & {
   destination: string;
   categories: string[];
   featured?: boolean;

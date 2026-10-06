@@ -1,12 +1,13 @@
 ---
-import type { Photo } from '../data/portfolio';
+import type { GalleryPhoto } from '../data/portfolio';
 interface Props {
-  photos: Photo[];
+  photos: GalleryPhoto[];
   currentPage: number;
   lastPage: number;
   basePath: string;
+  eagerCount?: number;
 }
-const { photos, currentPage, lastPage, basePath } = Astro.props;
+const { photos, currentPage, lastPage, basePath, eagerCount = 3 } = Astro.props;
 const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${page}/`;
 ---
 {photos.length > 0 ? (
@@ -14,7 +15,7 @@ const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${pa
     <div class="photo-grid">
       {photos.map((photo, index) => (
         <button class="photo-card" type="button" data-gallery-open data-full={photo.src} data-alt={photo.alt} data-title={photo.title ?? ''} aria-label={`View photograph: ${photo.alt}`}>
-          <img src={photo.thumb} alt={photo.alt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+          <img src={photo.thumb} alt={photo.alt} width={photo.width} height={photo.height} loading={index < eagerCount ? 'eager' : 'lazy'} decoding="async" />
           <span class="photo-caption">{photo.title ?? photo.alt} <span aria-hidden="true">↗</span></span>
         </button>
       ))}
