@@ -67,7 +67,7 @@ const first = photos[0];
     function schedule() {
       stop();
       if (photos.length > 1 && !userPaused && visible && !focused && !hovering && !document.hidden && !dialog?.open) {
-        timer = setTimeout(() => void show(requested + 1), 6000);
+        timer = setTimeout(() => void show(requested + 1), 3000);
       }
     }
     function updateToggle() {
