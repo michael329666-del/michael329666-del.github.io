@@ -1,24 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Gallery from './Gallery.astro';
-import type { Collection, Photo } from '../data/portfolio';
+import type { Collection, CollectionKind, Photo } from '../data/portfolio';
+import { collectionPath } from '../data/portfolio';
 interface Props {
   collection: Collection;
-  kind: 'destinations' | 'categories';
+  kind: CollectionKind;
   photos: Photo[];
   currentPage: number;
   lastPage: number;
   total: number;
 }
 const { collection, kind, photos, currentPage, lastPage, total } = Astro.props;
-const basePath = `/${kind}/${collection.slug}/`;
-const parent = kind === 'destinations' ? '目的地' : '题材';
-const parentEnglish = kind === 'destinations' ? 'Destinations' : 'Subjects';
-const label = kind === 'destinations' ? '02 / Destination' : '03 / Subject';
+const basePath = collectionPath(kind, collection.slug);
+const parent = kind === 'destinations' ? '目的地' : kind === 'portraits' ? '人像' : '题材';
+const parentEnglish = kind === 'destinations' ? 'Destinations' : kind === 'portraits' ? 'Portraits' : 'Subjects';
+const parentPath = kind === 'portraits' ? '/categories/portrait/' : `/${kind}/`;
+const label = kind === 'destinations' ? '02 / Destination' : kind === 'portraits' ? '03 / Portrait' : '03 / Subject';
 ---
-<BaseLayout title={`${collection.english} | ${collection.name} — Michael Wang`} description={collection.note} active={kind}>
+<BaseLayout title={`${collection.english} | ${collection.name} — Michael Wang`} description={collection.note} active={kind === 'portraits' ? 'categories' : kind}>
   <div class="page-wrap">
-    <div class="breadcrumbs"><a href={`/${kind}/`}>← <span lang="zh-CN">返回{parent}</span> / {parentEnglish}</a><span>/</span><span>{collection.english}</span></div>
+    <div class="breadcrumbs"><a href={parentPath}>← <span lang="zh-CN">返回{parent}</span> / {parentEnglish}</a><span>/</span><span>{collection.english}</span></div>
     <header class="gallery-heading"><div><span class="eyebrow">{label}</span><h1>{collection.english}</h1><span class="zh-support" lang="zh-CN">{collection.name}</span></div></header>
     <div class="gallery-toolbar"><span>PHOTO ARCHIVE</span>{total > 0 && <span>{total} PHOTOGRAPHS</span>}</div>
     <div class="album-gallery"><Gallery {photos} {currentPage} {lastPage} {basePath} /></div>

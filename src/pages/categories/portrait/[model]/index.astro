@@ -1,0 +1,10 @@
+---
+import type { GetStaticPaths } from 'astro';
+import GalleryPage from '../../../../components/GalleryPage.astro';
+import { portraitAlbums, photosFor, pageSize } from '../../../../data/portfolio';
+export const getStaticPaths = (() => portraitAlbums.map((collection) => ({ params: { model: collection.slug }, props: { collection } }))) satisfies GetStaticPaths;
+const { collection } = Astro.props;
+const allPhotos = photosFor('portraits', collection.slug);
+const lastPage = Math.max(1, Math.ceil(allPhotos.length / pageSize));
+---
+<GalleryPage {collection} kind="portraits" photos={allPhotos.slice(0, pageSize)} currentPage={1} {lastPage} total={allPhotos.length} />

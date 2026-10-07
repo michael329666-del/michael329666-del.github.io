@@ -1,9 +1,9 @@
 ---
-import type { Collection } from '../data/portfolio';
-import { photosFor } from '../data/portfolio';
+import type { Collection, CollectionKind } from '../data/portfolio';
+import { collectionPath, photosFor } from '../data/portfolio';
 interface Props {
   collections: Collection[];
-  kind: 'destinations' | 'categories';
+  kind: CollectionKind;
 }
 const { collections, kind } = Astro.props;
 const cards = collections.map((item) => {
@@ -11,9 +11,9 @@ const cards = collections.map((item) => {
   return { item, count: album.length, cover: album.find((photo) => photo.id === item.coverId) ?? album[0] };
 });
 ---
-<div class="collection-grid">
+<div class:list={['collection-grid', { 'portrait-collections': kind === 'portraits' }]}>
   {cards.map(({ item, count, cover }, index) => (
-    <a class="collection-card" href={`/${kind}/${item.slug}/`}>
+    <a class="collection-card" href={collectionPath(kind, item.slug)}>
       <div class:list={['collection-art', `art-${item.accent}`, { 'has-photo': cover }]} aria-hidden="true">
         {cover && <img class="collection-cover" src={cover.thumb} alt="" width={cover.width} height={cover.height} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />}
         <span class="art-index">{String(index + 1).padStart(2, '0')}</span>
@@ -29,4 +29,14 @@ const cards = collections.map((item) => {
   .collection-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .has-photo::after { inset: 0; width: 100%; height: 100%; aspect-ratio: auto; border: 0; border-radius: 0; background: linear-gradient(180deg, rgba(0,0,0,.2), transparent 30%, transparent 65%, rgba(0,0,0,.38)); }
   .has-photo .art-index, .has-photo .art-placeholder { color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+  .portrait-collections { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3.5rem 2rem; }
+  .portrait-collections .collection-card:nth-child(even) { margin-top: 0; }
+  .portrait-collections .collection-art { aspect-ratio: 4 / 5; min-height: 0; }
+  .portrait-collections .collection-cover { object-position: 50% 35%; }
+  @media (max-width: 900px) {
+    .portrait-collections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 620px) {
+    .portrait-collections { grid-template-columns: 1fr; }
+  }
 </style>

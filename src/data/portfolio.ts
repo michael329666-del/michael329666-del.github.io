@@ -1,4 +1,5 @@
 import selection from './destination-selection.json';
+import portraits from './portrait-selection.json';
 
 export type GalleryPhoto = {
   id: string;
@@ -14,6 +15,7 @@ export type Photo = GalleryPhoto & {
   destination: string;
   categories: string[];
   featured?: boolean;
+  portraitAlbum?: string;
 };
 
 export type Collection = {
@@ -26,7 +28,13 @@ export type Collection = {
 };
 
 // The source photo folders stay untouched. Only chosen website images go here.
-export const photos: Photo[] = selection;
+export const photos: Photo[] = [...selection, ...portraits.photos];
+export const portraitAlbums: Collection[] = portraits.albums;
+export type CollectionKind = 'destinations' | 'categories' | 'portraits';
+
+export function collectionPath(kind: CollectionKind, slug: string) {
+  return kind === 'portraits' ? `/categories/portrait/${slug}/` : `/${kind}/${slug}/`;
+}
 
 export const destinations: Collection[] = [
   { slug: 'boston', name: '波士顿，马萨诸塞', english: 'Boston, MA', note: 'Photographs from Boston, Massachusetts.', accent: 'stone', coverId: 'boston-dsc00926' },
@@ -43,13 +51,15 @@ export const destinations: Collection[] = [
 export const categories: Collection[] = [
   { slug: 'landscape', name: '风景与自然', english: 'Landscape & Nature', note: 'Landscape and nature photographs by Michael Wang.', accent: 'desert', coverId: 'sedona-dsc09854' },
   { slug: 'life', name: '街头与生活', english: 'Street & Life', note: 'Street and everyday photographs by Michael Wang.', accent: 'city', coverId: 'hong-kong-dsc01434' },
-  { slug: 'portrait', name: '人像', english: 'Portraits', note: 'Portrait photographs by Michael Wang.', accent: 'spring' },
+  { slug: 'portrait', name: '人像', english: 'Portraits', note: 'Portrait photographs by Michael Wang.', accent: 'spring', coverId: 'model-7-02' },
 ];
 
 export const pageSize = 12;
 
-export function photosFor(kind: 'destinations' | 'categories', slug: string) {
+export function photosFor(kind: CollectionKind, slug: string) {
   return photos.filter((photo) =>
-    kind === 'destinations' ? photo.destination === slug : photo.categories.includes(slug),
+    kind === 'destinations' ? photo.destination === slug
+      : kind === 'portraits' ? photo.portraitAlbum === slug
+      : photo.categories.includes(slug),
   );
 }

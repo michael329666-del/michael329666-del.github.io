@@ -1,0 +1,622 @@
+{
+  "albums": [
+    {
+      "slug": "model-1",
+      "name": "模特1",
+      "english": "Model 1",
+      "note": "Portraits — Model 1 / 模特1.",
+      "accent": "spring",
+      "coverId": "model-1-02"
+    },
+    {
+      "slug": "model-2",
+      "name": "模特2",
+      "english": "Model 2",
+      "note": "Portraits — Model 2 / 模特2.",
+      "accent": "spring",
+      "coverId": "model-2-03"
+    },
+    {
+      "slug": "model-3",
+      "name": "模特3",
+      "english": "Model 3",
+      "note": "Portraits — Model 3 / 模特3.",
+      "accent": "spring",
+      "coverId": "model-3-05"
+    },
+    {
+      "slug": "model-4",
+      "name": "模特4",
+      "english": "Model 4",
+      "note": "Portraits — Model 4 / 模特4.",
+      "accent": "spring",
+      "coverId": "model-4-04"
+    },
+    {
+      "slug": "model-5",
+      "name": "模特5",
+      "english": "Model 5",
+      "note": "Portraits — Model 5 / 模特5.",
+      "accent": "spring",
+      "coverId": "model-5-04"
+    },
+    {
+      "slug": "model-6",
+      "name": "模特6",
+      "english": "Model 6",
+      "note": "Portraits — Model 6 / 模特6.",
+      "accent": "spring",
+      "coverId": "model-6-05"
+    },
+    {
+      "slug": "model-7",
+      "name": "模特7",
+      "english": "Model 7",
+      "note": "Portraits — Model 7 / 模特7.",
+      "accent": "spring",
+      "coverId": "model-7-02"
+    }
+  ],
+  "photos": [
+    {
+      "id": "model-1-01",
+      "portraitAlbum": "model-1",
+      "title": "模特1 · 01",
+      "alt": "模特1 / Model 1 — portrait 01.",
+      "src": "/photos/portraits/model-1/01.webp",
+      "thumb": "/photos/portraits/model-1/01-thumb.webp",
+      "width": 959,
+      "height": 1278,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-1-02",
+      "portraitAlbum": "model-1",
+      "title": "模特1 · 02",
+      "alt": "模特1 / Model 1 — portrait 02.",
+      "src": "/photos/portraits/model-1/02.webp",
+      "thumb": "/photos/portraits/model-1/02-thumb.webp",
+      "width": 1465,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-1-03",
+      "portraitAlbum": "model-1",
+      "title": "模特1 · 03",
+      "alt": "模特1 / Model 1 — portrait 03.",
+      "src": "/photos/portraits/model-1/03.webp",
+      "thumb": "/photos/portraits/model-1/03-thumb.webp",
+      "width": 1214,
+      "height": 2158,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-1-04",
+      "portraitAlbum": "model-1",
+      "title": "模特1 · 04",
+      "alt": "模特1 / Model 1 — portrait 04.",
+      "src": "/photos/portraits/model-1/04.webp",
+      "thumb": "/photos/portraits/model-1/04-thumb.webp",
+      "width": 1600,
+      "height": 1066,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-2-01",
+      "portraitAlbum": "model-2",
+      "title": "模特2 · 01",
+      "alt": "模特2 / Model 2 — portrait 01.",
+      "src": "/photos/portraits/model-2/01.webp",
+      "thumb": "/photos/portraits/model-2/01-thumb.webp",
+      "width": 1458,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-2-02",
+      "portraitAlbum": "model-2",
+      "title": "模特2 · 02",
+      "alt": "模特2 / Model 2 — portrait 02.",
+      "src": "/photos/portraits/model-2/02.webp",
+      "thumb": "/photos/portraits/model-2/02-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-2-03",
+      "portraitAlbum": "model-2",
+      "title": "模特2 · 03",
+      "alt": "模特2 / Model 2 — portrait 03.",
+      "src": "/photos/portraits/model-2/03.webp",
+      "thumb": "/photos/portraits/model-2/03-thumb.webp",
+      "width": 1330,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-01",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 01",
+      "alt": "模特3 / Model 3 — portrait 01.",
+      "src": "/photos/portraits/model-3/01.webp",
+      "thumb": "/photos/portraits/model-3/01-thumb.webp",
+      "width": 1465,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-02",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 02",
+      "alt": "模特3 / Model 3 — portrait 02.",
+      "src": "/photos/portraits/model-3/02.webp",
+      "thumb": "/photos/portraits/model-3/02-thumb.webp",
+      "width": 1600,
+      "height": 1066,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-03",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 03",
+      "alt": "模特3 / Model 3 — portrait 03.",
+      "src": "/photos/portraits/model-3/03.webp",
+      "thumb": "/photos/portraits/model-3/03-thumb.webp",
+      "width": 1442,
+      "height": 960,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-04",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 04",
+      "alt": "模特3 / Model 3 — portrait 04.",
+      "src": "/photos/portraits/model-3/04.webp",
+      "thumb": "/photos/portraits/model-3/04-thumb.webp",
+      "width": 960,
+      "height": 1486,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-05",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 05",
+      "alt": "模特3 / Model 3 — portrait 05.",
+      "src": "/photos/portraits/model-3/05.webp",
+      "thumb": "/photos/portraits/model-3/05-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-06",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 06",
+      "alt": "模特3 / Model 3 — portrait 06.",
+      "src": "/photos/portraits/model-3/06.webp",
+      "thumb": "/photos/portraits/model-3/06-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-07",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 07",
+      "alt": "模特3 / Model 3 — portrait 07.",
+      "src": "/photos/portraits/model-3/07.webp",
+      "thumb": "/photos/portraits/model-3/07-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-08",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 08",
+      "alt": "模特3 / Model 3 — portrait 08.",
+      "src": "/photos/portraits/model-3/08.webp",
+      "thumb": "/photos/portraits/model-3/08-thumb.webp",
+      "width": 1465,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-09",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 09",
+      "alt": "模特3 / Model 3 — portrait 09.",
+      "src": "/photos/portraits/model-3/09.webp",
+      "thumb": "/photos/portraits/model-3/09-thumb.webp",
+      "width": 1465,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-10",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 10",
+      "alt": "模特3 / Model 3 — portrait 10.",
+      "src": "/photos/portraits/model-3/10.webp",
+      "thumb": "/photos/portraits/model-3/10-thumb.webp",
+      "width": 1600,
+      "height": 1066,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-11",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 11",
+      "alt": "模特3 / Model 3 — portrait 11.",
+      "src": "/photos/portraits/model-3/11.webp",
+      "thumb": "/photos/portraits/model-3/11-thumb.webp",
+      "width": 1465,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-3-12",
+      "portraitAlbum": "model-3",
+      "title": "模特3 · 12",
+      "alt": "模特3 / Model 3 — portrait 12.",
+      "src": "/photos/portraits/model-3/12.webp",
+      "thumb": "/photos/portraits/model-3/12-thumb.webp",
+      "width": 1600,
+      "height": 1066,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-4-01",
+      "portraitAlbum": "model-4",
+      "title": "模特4 · 01",
+      "alt": "模特4 / Model 4 — portrait 01.",
+      "src": "/photos/portraits/model-4/01.webp",
+      "thumb": "/photos/portraits/model-4/01-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-4-02",
+      "portraitAlbum": "model-4",
+      "title": "模特4 · 02",
+      "alt": "模特4 / Model 4 — portrait 02.",
+      "src": "/photos/portraits/model-4/02.webp",
+      "thumb": "/photos/portraits/model-4/02-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-4-03",
+      "portraitAlbum": "model-4",
+      "title": "模特4 · 03",
+      "alt": "模特4 / Model 4 — portrait 03.",
+      "src": "/photos/portraits/model-4/03.webp",
+      "thumb": "/photos/portraits/model-4/03-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-4-04",
+      "portraitAlbum": "model-4",
+      "title": "模特4 · 04",
+      "alt": "模特4 / Model 4 — portrait 04.",
+      "src": "/photos/portraits/model-4/04.webp",
+      "thumb": "/photos/portraits/model-4/04-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-4-05",
+      "portraitAlbum": "model-4",
+      "title": "模特4 · 05",
+      "alt": "模特4 / Model 4 — portrait 05.",
+      "src": "/photos/portraits/model-4/05.webp",
+      "thumb": "/photos/portraits/model-4/05-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-5-01",
+      "portraitAlbum": "model-5",
+      "title": "模特5 · 01",
+      "alt": "模特5 / Model 5 — portrait 01.",
+      "src": "/photos/portraits/model-5/01.webp",
+      "thumb": "/photos/portraits/model-5/01-thumb.webp",
+      "width": 1280,
+      "height": 1920,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-5-02",
+      "portraitAlbum": "model-5",
+      "title": "模特5 · 02",
+      "alt": "模特5 / Model 5 — portrait 02.",
+      "src": "/photos/portraits/model-5/02.webp",
+      "thumb": "/photos/portraits/model-5/02-thumb.webp",
+      "width": 1600,
+      "height": 1021,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-5-03",
+      "portraitAlbum": "model-5",
+      "title": "模特5 · 03",
+      "alt": "模特5 / Model 5 — portrait 03.",
+      "src": "/photos/portraits/model-5/03.webp",
+      "thumb": "/photos/portraits/model-5/03-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-5-04",
+      "portraitAlbum": "model-5",
+      "title": "模特5 · 04",
+      "alt": "模特5 / Model 5 — portrait 04.",
+      "src": "/photos/portraits/model-5/04.webp",
+      "thumb": "/photos/portraits/model-5/04-thumb.webp",
+      "width": 1465,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-5-05",
+      "portraitAlbum": "model-5",
+      "title": "模特5 · 05",
+      "alt": "模特5 / Model 5 — portrait 05.",
+      "src": "/photos/portraits/model-5/05.webp",
+      "thumb": "/photos/portraits/model-5/05-thumb.webp",
+      "width": 1280,
+      "height": 1920,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-6-01",
+      "portraitAlbum": "model-6",
+      "title": "模特6 · 01",
+      "alt": "模特6 / Model 6 — portrait 01.",
+      "src": "/photos/portraits/model-6/01.webp",
+      "thumb": "/photos/portraits/model-6/01-thumb.webp",
+      "width": 1279,
+      "height": 1919,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-6-02",
+      "portraitAlbum": "model-6",
+      "title": "模特6 · 02",
+      "alt": "模特6 / Model 6 — portrait 02.",
+      "src": "/photos/portraits/model-6/02.webp",
+      "thumb": "/photos/portraits/model-6/02-thumb.webp",
+      "width": 960,
+      "height": 1440,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-6-03",
+      "portraitAlbum": "model-6",
+      "title": "模特6 · 03",
+      "alt": "模特6 / Model 6 — portrait 03.",
+      "src": "/photos/portraits/model-6/03.webp",
+      "thumb": "/photos/portraits/model-6/03-thumb.webp",
+      "width": 1279,
+      "height": 1919,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-6-04",
+      "portraitAlbum": "model-6",
+      "title": "模特6 · 04",
+      "alt": "模特6 / Model 6 — portrait 04.",
+      "src": "/photos/portraits/model-6/04.webp",
+      "thumb": "/photos/portraits/model-6/04-thumb.webp",
+      "width": 1279,
+      "height": 1919,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-6-05",
+      "portraitAlbum": "model-6",
+      "title": "模特6 · 05",
+      "alt": "模特6 / Model 6 — portrait 05.",
+      "src": "/photos/portraits/model-6/05.webp",
+      "thumb": "/photos/portraits/model-6/05-thumb.webp",
+      "width": 1279,
+      "height": 1919,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-6-06",
+      "portraitAlbum": "model-6",
+      "title": "模特6 · 06",
+      "alt": "模特6 / Model 6 — portrait 06.",
+      "src": "/photos/portraits/model-6/06.webp",
+      "thumb": "/photos/portraits/model-6/06-thumb.webp",
+      "width": 1279,
+      "height": 1919,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-7-01",
+      "portraitAlbum": "model-7",
+      "title": "模特7 · 01",
+      "alt": "模特7 / Model 7 — portrait 01.",
+      "src": "/photos/portraits/model-7/01.webp",
+      "thumb": "/photos/portraits/model-7/01-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-7-02",
+      "portraitAlbum": "model-7",
+      "title": "模特7 · 02",
+      "alt": "模特7 / Model 7 — portrait 02.",
+      "src": "/photos/portraits/model-7/02.webp",
+      "thumb": "/photos/portraits/model-7/02-thumb.webp",
+      "width": 1600,
+      "height": 1066,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-7-03",
+      "portraitAlbum": "model-7",
+      "title": "模特7 · 03",
+      "alt": "模特7 / Model 7 — portrait 03.",
+      "src": "/photos/portraits/model-7/03.webp",
+      "thumb": "/photos/portraits/model-7/03-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-7-04",
+      "portraitAlbum": "model-7",
+      "title": "模特7 · 04",
+      "alt": "模特7 / Model 7 — portrait 04.",
+      "src": "/photos/portraits/model-7/04.webp",
+      "thumb": "/photos/portraits/model-7/04-thumb.webp",
+      "width": 1467,
+      "height": 2200,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    },
+    {
+      "id": "model-7-05",
+      "portraitAlbum": "model-7",
+      "title": "模特7 · 05",
+      "alt": "模特7 / Model 7 — portrait 05.",
+      "src": "/photos/portraits/model-7/05.webp",
+      "thumb": "/photos/portraits/model-7/05-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "destination": "",
+      "categories": [
+        "portrait"
+      ]
+    }
+  ]
+}

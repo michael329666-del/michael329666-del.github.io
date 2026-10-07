@@ -4,7 +4,7 @@ Michael Wang 的 Astro 摄影作品集，已发布到
 [GitHub Pages](https://michael329666-del.github.io/)。
 首页已加入 17 张精选照片，目的地相册已加入 9 个地点的 203 张照片。
 题材相册已逐张复核并精简：风景与自然 63 张，街头与生活 88 张。
-人像待从单独的素材中选片。
+人像已加入 7 位模特的 40 张照片，每位模特一个独立相册。
 
 29 组相似场景和连拍各保留一张，共从题材中移除 52 张。
 同组中有首页精选时优先保留该照片，17 张首页精选全部保留。
@@ -19,6 +19,8 @@ Michael Wang 的 Astro 摄影作品集，已发布到
 - `/destinations/<slug>/`：目的地照片网格
 - `/categories/`：按题材浏览
 - `/categories/<slug>/`：题材照片网格
+- `/categories/portrait/`：人像相册目录
+- `/categories/portrait/model-<number>/`：每位模特的照片
 - `/about/`：关于我
 
 相册每页最多显示 12 张；超过后会自动生成下一页。点击照片会打开大图。
@@ -69,6 +71,22 @@ node scripts/import-destinations.mjs
 脚本重建的照片清单中 `categories` 暂为空，重新导入后需恢复已审核的题材标签。
 
 正式加入照片时，请先制作适合网页的副本，再填入图片路径与说明。不要把相机原始大图直接放入网站。
+
+## 人像相册
+
+人像使用“模特1”至“模特7”匿名编号，照片数量依次为
+4、3、12、5、5、6、5 张；不包含“小红书”文件夹。
+标题、说明、网址、图片文件名和元数据均不包含模特原姓名。
+
+相册和照片记录在 `src/data/portrait-selection.json`，
+网页副本在 `public/photos/portraits/model-<number>/`。
+编号按照源文件夹的名称排序确定，源照片保持不变。
+本地 `previews/portraits/source-audit.json` 保存对应关系与源文件哈希，
+不提交、不发布；重新导入时先核对文件夹集合以避免更换模特编号。
+
+```sh
+node scripts/import-portraits.mjs "<portrait 文件夹绝对路径>"
+```
 
 ## 本地预览
 

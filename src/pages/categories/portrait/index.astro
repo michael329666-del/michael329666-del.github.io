@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CollectionIndex from '../../../components/CollectionIndex.astro';
+import { portraitAlbums, photosFor } from '../../../data/portfolio';
+const total = photosFor('categories', 'portrait').length;
+---
+<BaseLayout title="Portraits | 人像 — Michael Wang" description="Portrait photographs by Michael Wang, collected in individual model albums." active="categories">
+  <div class="page-wrap">
+    <div class="breadcrumbs"><a href="/categories/">← <span lang="zh-CN">返回题材</span> / Subjects</a><span>/</span><span>Portraits</span></div>
+    <header class="gallery-heading"><div><span class="eyebrow">03 / PORTRAITS</span><h1>Portraits</h1><span class="zh-support" lang="zh-CN">人像</span></div></header>
+    <div class="gallery-toolbar"><span>{portraitAlbums.length} ALBUMS</span><span>{total} PHOTOGRAPHS</span></div>
+    <CollectionIndex collections={portraitAlbums} kind="portraits" />
+  </div>
+</BaseLayout>

@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import GalleryPage from '../../../components/GalleryPage.astro';
 import { categories, photosFor, pageSize } from '../../../data/portfolio';
-export const getStaticPaths = (() => categories.map((collection) => ({ params: { slug: collection.slug }, props: { collection } }))) satisfies GetStaticPaths;
+export const getStaticPaths = (() => categories.filter((collection) => collection.slug !== 'portrait').map((collection) => ({ params: { slug: collection.slug }, props: { collection } }))) satisfies GetStaticPaths;
 const { collection } = Astro.props;
 const allPhotos = photosFor('categories', collection.slug);
 const lastPage = Math.max(1, Math.ceil(allPhotos.length / pageSize));
