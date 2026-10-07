@@ -56,7 +56,17 @@ export const destinations: Collection[] = [
 export const categories: Collection[] = [
   { slug: 'landscape', name: '风景与自然', english: 'Landscape & Nature', note: 'Landscape and nature photographs by Michael Wang.', accent: 'desert', coverId: 'sedona-dsc09854' },
   { slug: 'life', name: '街头与生活', english: 'Street & Life', note: 'Street and everyday photographs by Michael Wang.', accent: 'city', coverId: 'hong-kong-dsc01434' },
-  { slug: 'portrait', name: '人像', english: 'Portraits', note: 'Portrait photographs by Michael Wang.', accent: 'spring', coverId: 'model-7-02' },
+  {
+    slug: 'portrait', name: '人像', english: 'Portraits',
+    note: 'Portrait photographs by Michael Wang.', accent: 'spring',
+    cover: {
+      id: 'portrait-category-cover',
+      src: '/photos/portraits/covers/portrait-category.webp',
+      thumb: '/photos/portraits/covers/portrait-category.webp',
+      alt: 'Portrait collage featuring Model 3, Model 5, and Model 6.',
+      width: 1600, height: 1080,
+    },
+  },
 ];
 
 export const pageSize = 12;
