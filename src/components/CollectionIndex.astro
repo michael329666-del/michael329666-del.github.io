@@ -8,19 +8,19 @@ interface Props {
 const { collections, kind } = Astro.props;
 const cards = collections.map((item) => {
   const album = photosFor(kind, item.slug);
-  return { item, count: album.length, cover: album.find((photo) => photo.id === item.coverId) ?? album[0] };
+  return { item, count: album.length, cover: item.cover ?? album.find((photo) => photo.id === item.coverId) ?? album[0] };
 });
 ---
 <div class:list={['collection-grid', { 'portrait-collections': kind === 'portraits' }]}>
   {cards.map(({ item, count, cover }, index) => (
     <a class="collection-card" href={collectionPath(kind, item.slug)}>
-      <div class:list={['collection-art', `art-${item.accent}`, { 'has-photo': cover }]} aria-hidden="true">
+      <div class:list={['collection-art', `art-${item.accent}`, { 'has-photo': cover, 'has-collage': item.cover }]} style={item.cover ? `aspect-ratio: ${item.cover.width} / ${item.cover.height}` : undefined} aria-hidden="true">
         {cover && <img class="collection-cover" src={cover.thumb} alt="" width={cover.width} height={cover.height} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />}
-        <span class="art-index">{String(index + 1).padStart(2, '0')}</span>
+        {!item.cover && <span class="art-index">{String(index + 1).padStart(2, '0')}</span>}
         {!cover && <span class="art-line"></span>}
-        <span class="art-placeholder">{count > 0 ? `${count} PHOTOGRAPHS` : 'PHOTO ARCHIVE'}</span>
+        {!item.cover && <span class="art-placeholder">{count > 0 ? `${count} PHOTOGRAPHS` : 'PHOTO ARCHIVE'}</span>}
       </div>
-      <div class="collection-meta"><div><h2>{item.english}</h2><span class="zh-support" lang="zh-CN">{item.name}</span></div><span class="card-arrow" aria-hidden="true">↗</span></div>
+      <div class="collection-meta"><div><h2>{item.english}</h2><span class="zh-support" lang="zh-CN">{item.name}</span>{item.cover && <span class="collection-count">{count} PHOTOGRAPHS</span>}</div><span class="card-arrow" aria-hidden="true">↗</span></div>
     </a>
   ))}
 </div>
@@ -33,6 +33,9 @@ const cards = collections.map((item) => {
   .portrait-collections .collection-card:nth-child(even) { margin-top: 0; }
   .portrait-collections .collection-art { aspect-ratio: 4 / 5; min-height: 0; }
   .portrait-collections .collection-cover { object-position: 50% 35%; }
+  .has-collage::after { display: none; }
+  .has-collage .collection-cover { object-fit: contain; object-position: center; }
+  .collection-count { display: block; margin-top: .7rem; color: var(--muted); font-size: .62rem; font-weight: 700; letter-spacing: .12em; }
   @media (max-width: 900px) {
     .portrait-collections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }

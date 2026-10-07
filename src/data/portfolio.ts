@@ -1,5 +1,6 @@
 import selection from './destination-selection.json';
 import portraits from './portrait-selection.json';
+import portraitCovers from './portrait-covers.json';
 
 export type GalleryPhoto = {
   id: string;
@@ -25,11 +26,15 @@ export type Collection = {
   note: string;
   accent: string;
   coverId?: string;
+  cover?: GalleryPhoto;
 };
 
 // The source photo folders stay untouched. Only chosen website images go here.
 export const photos: Photo[] = [...selection, ...portraits.photos];
-export const portraitAlbums: Collection[] = portraits.albums;
+export const portraitAlbums: Collection[] = portraits.albums.map((album) => ({
+  ...album,
+  cover: portraitCovers.find((cover) => cover.id === `${album.slug}-cover`),
+}));
 export type CollectionKind = 'destinations' | 'categories' | 'portraits';
 
 export function collectionPath(kind: CollectionKind, slug: string) {

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "model-1-cover",
+    "src": "/photos/portraits/covers/model-1.webp",
+    "thumb": "/photos/portraits/covers/model-1.webp",
+    "alt": "模特1 / Model 1 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "model-2-cover",
+    "src": "/photos/portraits/covers/model-2.webp",
+    "thumb": "/photos/portraits/covers/model-2.webp",
+    "alt": "模特2 / Model 2 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "model-3-cover",
+    "src": "/photos/portraits/covers/model-3.webp",
+    "thumb": "/photos/portraits/covers/model-3.webp",
+    "alt": "模特3 / Model 3 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "model-4-cover",
+    "src": "/photos/portraits/covers/model-4.webp",
+    "thumb": "/photos/portraits/covers/model-4.webp",
+    "alt": "模特4 / Model 4 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "model-5-cover",
+    "src": "/photos/portraits/covers/model-5.webp",
+    "thumb": "/photos/portraits/covers/model-5.webp",
+    "alt": "模特5 / Model 5 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "model-6-cover",
+    "src": "/photos/portraits/covers/model-6.webp",
+    "thumb": "/photos/portraits/covers/model-6.webp",
+    "alt": "模特6 / Model 6 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "model-7-cover",
+    "src": "/photos/portraits/covers/model-7.webp",
+    "thumb": "/photos/portraits/covers/model-7.webp",
+    "alt": "模特7 / Model 7 — portrait collage cover.",
+    "width": 900,
+    "height": 1200
+  }
+]

@@ -78,6 +78,11 @@ node scripts/import-destinations.mjs
 4、3、12、5、5、6、5 张；不包含“小红书”文件夹。
 标题、说明、网址、图片文件名和元数据均不包含模特原姓名。
 
+目录使用单独的拼图封面，完整保留比例和白边。
+封面记录在 `src/data/portrait-covers.json`，
+副本在 `public/photos/portraits/covers/`；拼图只显示在相册目录，
+点进相册后仍浏览 40 张单张照片，封面不计入照片数量。
+
 相册和照片记录在 `src/data/portrait-selection.json`，
 网页副本在 `public/photos/portraits/model-<number>/`。
 编号按照源文件夹的名称排序确定，源照片保持不变。
