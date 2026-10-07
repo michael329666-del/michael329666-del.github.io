@@ -85,9 +85,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "boston",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "boston-dsc00441",
@@ -100,9 +98,7 @@
     "width": 1467,
     "height": 2200,
     "destination": "boston",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "boston-dsc00449",
@@ -460,9 +456,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "washington-dc",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "washington-dc-dsc04692",
@@ -625,9 +619,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "washington-dc",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "washington-dc-dsc04793",
@@ -790,9 +782,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "harrisburg",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "harrisburg-dsc08253",
@@ -910,9 +900,7 @@
     "width": 1467,
     "height": 2200,
     "destination": "hong-kong",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "hong-kong-dsc01363",
@@ -1015,9 +1003,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "hong-kong",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "hong-kong-dsc01620",
@@ -1300,9 +1286,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06068",
@@ -1345,9 +1329,7 @@
     "width": 1450,
     "height": 2200,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06158",
@@ -1360,9 +1342,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "miami",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06166",
@@ -1375,9 +1355,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06234",
@@ -1435,9 +1413,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06426",
@@ -1450,9 +1426,7 @@
     "width": 1548,
     "height": 2200,
     "destination": "miami",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06430",
@@ -1570,9 +1544,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06779",
@@ -1630,9 +1602,7 @@
     "width": 1600,
     "height": 858,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc06917",
@@ -1720,9 +1690,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc07361",
@@ -1795,9 +1763,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc07499",
@@ -1840,9 +1806,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc07555",
@@ -1855,9 +1819,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "miami",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "miami-dsc07697",
@@ -1930,9 +1892,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "orlando",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "orlando-dsc07970",
@@ -2080,9 +2040,7 @@
     "width": 1459,
     "height": 2200,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011106",
@@ -2140,9 +2098,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011155",
@@ -2170,9 +2126,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011166",
@@ -2185,9 +2139,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011167",
@@ -2200,9 +2152,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011168",
@@ -2215,9 +2165,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011169",
@@ -2245,9 +2193,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011175",
@@ -2260,9 +2206,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011181",
@@ -2275,9 +2219,7 @@
     "width": 1465,
     "height": 2200,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011185",
@@ -2290,9 +2232,7 @@
     "width": 1465,
     "height": 2200,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011187",
@@ -2305,9 +2245,7 @@
     "width": 1465,
     "height": 2200,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011193",
@@ -2350,9 +2288,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011214",
@@ -2365,9 +2301,7 @@
     "width": 1600,
     "height": 2018,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011217",
@@ -2380,9 +2314,7 @@
     "width": 1457,
     "height": 2200,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011220",
@@ -2395,9 +2327,7 @@
     "width": 1568,
     "height": 2200,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011224",
@@ -2410,9 +2340,7 @@
     "width": 1600,
     "height": 957,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011227",
@@ -2425,9 +2353,7 @@
     "width": 1600,
     "height": 1120,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011228",
@@ -2440,9 +2366,7 @@
     "width": 1600,
     "height": 1030,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011235",
@@ -2455,9 +2379,7 @@
     "width": 1600,
     "height": 1091,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011244",
@@ -2485,9 +2407,7 @@
     "width": 1600,
     "height": 1141,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011268",
@@ -2500,9 +2420,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011292",
@@ -2515,9 +2433,7 @@
     "width": 1600,
     "height": 1013,
     "destination": "penns-cave",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "penns-cave-p1011301",
@@ -2650,9 +2566,7 @@
     "width": 1600,
     "height": 1152,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09510",
@@ -2755,9 +2669,7 @@
     "width": 1600,
     "height": 1066,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09789",
@@ -2770,9 +2682,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09830",
@@ -2800,9 +2710,7 @@
     "width": 1467,
     "height": 2200,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09851",
@@ -2815,9 +2723,7 @@
     "width": 1467,
     "height": 2200,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09852",
@@ -2830,9 +2736,7 @@
     "width": 1600,
     "height": 1067,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09853",
@@ -2845,9 +2749,7 @@
     "width": 1600,
     "height": 2118,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09854",
@@ -2935,9 +2837,7 @@
     "width": 1561,
     "height": 2200,
     "destination": "sedona",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "sedona-dsc09980",
@@ -2995,9 +2895,7 @@
     "width": 1467,
     "height": 2200,
     "destination": "st-paul",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "st-paul-dsc09277",
@@ -3010,9 +2908,7 @@
     "width": 1456,
     "height": 2200,
     "destination": "st-paul",
-    "categories": [
-      "life"
-    ]
+    "categories": []
   },
   {
     "id": "st-paul-dsc09283",
