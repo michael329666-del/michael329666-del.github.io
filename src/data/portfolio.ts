@@ -41,8 +41,8 @@ export const destinations: Collection[] = [
 ];
 
 export const categories: Collection[] = [
-  { slug: 'landscape', name: '风景与自然', english: 'Landscape & Nature', note: 'Landscape and nature photographs by Michael Wang.', accent: 'desert' },
-  { slug: 'life', name: '街头与生活', english: 'Street & Life', note: 'Street and everyday photographs by Michael Wang.', accent: 'city' },
+  { slug: 'landscape', name: '风景与自然', english: 'Landscape & Nature', note: 'Landscape and nature photographs by Michael Wang.', accent: 'desert', coverId: 'sedona-dsc09854' },
+  { slug: 'life', name: '街头与生活', english: 'Street & Life', note: 'Street and everyday photographs by Michael Wang.', accent: 'city', coverId: 'hong-kong-dsc01434' },
   { slug: 'portrait', name: '人像', english: 'Portraits', note: 'Portrait photographs by Michael Wang.', accent: 'spring' },
 ];
 
