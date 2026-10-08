@@ -9,8 +9,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h1><span lang="zh-CN">关于我</span><span class="heading-divider" aria-hidden="true">/</span><span lang="en">About</span></h1>
       </header>
       <div class="about-grid">
-        <figure class="about-portrait" aria-label="肖像照片预留位置 / Portrait placeholder">
-          <div class="portrait-placeholder"><span lang="zh-CN">肖像照片</span><span lang="en">Portrait</span></div>
+        <figure class="about-portrait">
+          <img
+            src="/photos/about/michael-wang.webp"
+            srcset="/photos/about/michael-wang-400.webp 400w, /photos/about/michael-wang.webp 800w"
+            sizes="(max-width: 540px) 202px, 262px"
+            width="800"
+            height="800"
+            alt="王牧川 / Michael Wang"
+            decoding="async"
+          />
         </figure>
         <div class="language-columns">
           <section class="language-column" lang="zh-CN" aria-labelledby="name-zh">
@@ -111,39 +119,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     align-items: start;
   }
   .about-portrait {
-    position: relative;
     grid-column: 1;
     grid-row: 1;
-    display: grid;
-    place-items: center;
-    width: 100%;
-    aspect-ratio: 3 / 4;
+    width: min(100%, 280px);
     margin: 0;
+    padding: 8px;
     border: 1px solid rgba(109, 103, 97, .18);
-    background:
-      radial-gradient(ellipse at 28% 20%, rgba(255, 255, 255, .8), transparent 65%),
-      linear-gradient(145deg, #eae4da, #d8cfc1);
-    box-shadow: 0 18px 32px -26px rgba(57, 39, 27, .32), inset 0 0 0 10px rgba(251, 250, 247, .45);
+    background: #fff;
+    box-shadow: 0 18px 32px -26px rgba(57, 39, 27, .24);
   }
-  .about-portrait::before {
-    position: absolute;
-    inset: 24px;
-    border: 1px solid rgba(109, 103, 97, .18);
-    content: "";
+  .about-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
   }
-  .about-portrait::after {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    width: 1.8rem;
-    height: 1.8rem;
-    border-top: 1px solid var(--signal);
-    border-left: 1px solid var(--signal);
-    content: "";
-  }
-  .portrait-placeholder { display: flex; flex-direction: column; gap: .65rem; color: #756b60; text-align: center; }
-  .portrait-placeholder > [lang="zh-CN"] { font-size: .66rem; letter-spacing: .22em; }
-  .portrait-placeholder > [lang="en"] { order: -1; font-family: var(--about-serif); font-size: 2rem; font-style: italic; }
   .language-columns {
     grid-column: 2;
     display: grid;
@@ -224,7 +214,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
   @media (max-width: 540px) {
     .about-heading { margin-bottom: 2.25rem; }
-    .about-portrait { max-width: 240px; }
+    .about-portrait { max-width: 220px; }
     .language-columns { column-gap: 1.25rem; }
     .identity-name { margin-bottom: .8rem; font-size: 2rem; }
     .identity-details { margin-bottom: 1.75rem; font-size: .74rem; }
