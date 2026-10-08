@@ -11,12 +11,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="about-grid">
         <figure class="about-portrait">
           <img
-            src="/photos/about/michael-wang.webp"
-            srcset="/photos/about/michael-wang-400.webp 400w, /photos/about/michael-wang.webp 800w"
-            sizes="(max-width: 540px) 202px, 262px"
-            width="800"
+            src="/photos/about/michael-wang-photographing.webp"
+            srcset="/photos/about/michael-wang-photographing-600.webp 600w, /photos/about/michael-wang-photographing.webp 1200w"
+            sizes="(max-width: 620px) calc(100vw - 66px), (max-width: 1100px) 542px, (max-width: 1440px) 36vw, 465px"
+            width="1200"
             height="800"
-            alt="王牧川 / Michael Wang"
+            alt="王牧川手持相机拍摄 / Michael Wang taking photographs"
             decoding="async"
           />
         </figure>
@@ -114,14 +114,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .heading-divider { color: var(--signal); opacity: .6; }
   .about-grid {
     display: grid;
-    grid-template-columns: minmax(240px, .8fr) minmax(0, 2fr);
+    grid-template-columns: minmax(320px, 1.1fr) minmax(0, 1.7fr);
     column-gap: clamp(2.5rem, 5.5vw, 5rem);
     align-items: start;
   }
   .about-portrait {
     grid-column: 1;
     grid-row: 1;
-    width: min(100%, 280px);
+    width: 100%;
     margin: 0;
     padding: 8px;
     border: 1px solid rgba(109, 103, 97, .18);
@@ -132,7 +132,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 1;
+    aspect-ratio: 3 / 2;
   }
   .language-columns {
     grid-column: 2;
@@ -198,14 +198,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     line-height: 1.35;
     overflow-wrap: anywhere;
   }
-  @media (min-width: 901px) and (max-width: 1100px) {
-    .about-grid { grid-template-columns: 230px minmax(0, 1fr); gap: 2.25rem; }
-    .identity-name { font-size: 1.95rem; }
-    .language-columns { column-gap: 1.5rem; }
-  }
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .about-grid { grid-template-columns: 1fr; row-gap: 2.75rem; }
-    .about-portrait { max-width: 280px; justify-self: center; }
+    .about-portrait { max-width: 560px; justify-self: center; }
     .language-columns { grid-column: 1; column-gap: clamp(1.5rem, 6vw, 3.5rem); }
     .identity-name { font-size: clamp(2rem, 4.6vw, 2.8rem); }
     .identity-details { margin-bottom: 2rem; }
@@ -214,7 +209,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
   @media (max-width: 540px) {
     .about-heading { margin-bottom: 2.25rem; }
-    .about-portrait { max-width: 220px; }
     .language-columns { column-gap: 1.25rem; }
     .identity-name { margin-bottom: .8rem; font-size: 2rem; }
     .identity-details { margin-bottom: 1.75rem; font-size: .74rem; }
