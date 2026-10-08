@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Gallery from './Gallery.astro';
 import type { Collection, CollectionKind, Photo } from '../data/portfolio';
-import { collectionPath } from '../data/portfolio';
+import { collectionPath, photosFor } from '../data/portfolio';
 interface Props {
   collection: Collection;
   kind: CollectionKind;
@@ -13,6 +13,7 @@ interface Props {
 }
 const { collection, kind, photos, currentPage, lastPage, total } = Astro.props;
 const basePath = collectionPath(kind, collection.slug);
+const lightboxPhotos = photosFor(kind, collection.slug);
 const parent = kind === 'destinations' ? '目的地' : kind === 'portraits' ? '人像' : '题材';
 const parentEnglish = kind === 'destinations' ? 'Destinations' : kind === 'portraits' ? 'Portraits' : 'Subjects';
 const parentPath = kind === 'portraits' ? '/categories/portrait/' : `/${kind}/`;
@@ -23,7 +24,7 @@ const label = kind === 'destinations' ? '02 / Destination' : kind === 'portraits
     <div class="breadcrumbs"><a href={parentPath}>← <span lang="zh-CN">返回{parent}</span> / {parentEnglish}</a><span>/</span><span>{collection.english}</span></div>
     <header class="gallery-heading"><div><span class="eyebrow">{label}</span><h1>{collection.english}</h1><span class="zh-support" lang="zh-CN">{collection.name}</span></div></header>
     <div class="gallery-toolbar"><span>PHOTO ARCHIVE</span>{total > 0 && <span>{total} PHOTOGRAPHS</span>}</div>
-    <div class="album-gallery"><Gallery {photos} {currentPage} {lastPage} {basePath} /></div>
+    <div class="album-gallery"><Gallery {photos} {lightboxPhotos} {currentPage} {lastPage} {basePath} /></div>
   </div>
 </BaseLayout>
 

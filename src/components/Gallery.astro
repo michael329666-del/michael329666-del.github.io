@@ -1,46 +1,42 @@
 ---
 import type { GalleryPhoto } from '../data/portfolio';
+import PhotoLightbox from './PhotoLightbox.astro';
 interface Props {
   photos: GalleryPhoto[];
+  lightboxPhotos?: GalleryPhoto[];
   currentPage: number;
   lastPage: number;
   basePath: string;
   eagerCount?: number;
 }
-const { photos, currentPage, lastPage, basePath, eagerCount = 3 } = Astro.props;
+const { photos, lightboxPhotos = photos, currentPage, lastPage, basePath, eagerCount = 3 } = Astro.props;
+const photoIndexes = new Map(lightboxPhotos.map((photo, index) => [photo.id, index]));
+const lightboxData = lightboxPhotos.map(({ src, alt, title }) => ({ src, alt, title }));
 const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${page}/`;
 ---
 {photos.length > 0 ? (
-  <>
+  <div data-gallery data-photos={JSON.stringify(lightboxData)}>
     <div class="photo-grid">
       {photos.map((photo, index) => (
-        <button class="photo-card" type="button" data-gallery-open data-full={photo.src} data-alt={photo.alt} data-title={photo.title ?? ''} aria-label={`View photograph: ${photo.alt}`}>
+        <button class="photo-card" type="button" data-gallery-open data-photo-index={photoIndexes.get(photo.id)} aria-label={`View photograph: ${photo.alt}`}>
           <img src={photo.thumb} alt={photo.alt} width={photo.width} height={photo.height} loading={index < eagerCount ? 'eager' : 'lazy'} decoding="async" />
           <span class="photo-caption">{photo.title ?? photo.alt} <span aria-hidden="true">↗</span></span>
         </button>
       ))}
     </div>
     {lastPage > 1 && <nav class="pagination" aria-label="Photo pagination"><a href={currentPage > 1 ? pageHref(currentPage - 1) : undefined} aria-disabled={currentPage === 1 ? 'true' : undefined}>← Previous / <span lang="zh-CN">上一页</span></a><span>{currentPage} / {lastPage}</span><a href={currentPage < lastPage ? pageHref(currentPage + 1) : undefined} aria-disabled={currentPage === lastPage ? 'true' : undefined}>Next / <span lang="zh-CN">下一页</span> →</a></nav>}
-    <dialog class="lightbox" data-lightbox aria-label="Full-size photograph">
-      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close photograph">Close / <span lang="zh-CN">关闭</span> ×</button>
-      <figure><img data-lightbox-image alt="" /><figcaption data-lightbox-caption></figcaption></figure>
-    </dialog>
+    <PhotoLightbox />
     <script>
-      const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
-      const dialogImage = dialog?.querySelector<HTMLImageElement>('[data-lightbox-image]');
-      const caption = dialog?.querySelector<HTMLElement>('[data-lightbox-caption]');
-      document.querySelectorAll<HTMLButtonElement>('[data-gallery-open]').forEach((button) => {
-        button.addEventListener('click', () => {
-          if (!dialog || !dialogImage) return;
-          dialogImage.src = button.dataset.full ?? '';
-          dialogImage.alt = button.dataset.alt ?? '';
-          if (caption) caption.textContent = button.dataset.title || button.dataset.alt || '';
-          dialog.showModal();
+      import { createLightbox, type LightboxPhoto } from '../scripts/lightbox';
+      document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+        const dialog = gallery.querySelector<HTMLDialogElement>('[data-lightbox]');
+        if (!dialog) return;
+        const photos: LightboxPhoto[] = JSON.parse(gallery.dataset.photos ?? '[]');
+        const lightbox = createLightbox(dialog, photos);
+        gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-open]').forEach((button) => {
+          button.addEventListener('click', () => lightbox.open(Number(button.dataset.photoIndex)));
         });
       });
-      dialog?.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
-      dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
-      dialog?.addEventListener('close', () => { if (dialogImage) dialogImage.removeAttribute('src'); });
     </script>
-  </>
+  </div>
 ) : <div class="gallery-empty"><span class="empty-mark" aria-hidden="true">✳</span><p>Photographs to come</p></div>}

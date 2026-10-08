@@ -1,5 +1,6 @@
 ---
 import type { GalleryPhoto } from '../data/portfolio';
+import PhotoLightbox from './PhotoLightbox.astro';
 interface Props { photos: GalleryPhoto[] }
 const { photos } = Astro.props;
 const first = photos[0];
@@ -28,14 +29,12 @@ const first = photos[0];
     </div>}
   </div>
   <span class="feature-status" data-feature-status role="status" aria-live="polite"></span>
-  <dialog class="lightbox" data-feature-dialog aria-label="Full-size photograph / 照片大图">
-    <button class="lightbox-close" type="button" data-feature-close aria-label="Close photograph / 关闭大图">Close / <span lang="zh-CN">关闭</span> ×</button>
-    <figure><img data-feature-full alt="" /><figcaption data-feature-full-caption></figcaption></figure>
-  </dialog>
+  <PhotoLightbox />
 </div>}
 
 <script>
   import type { GalleryPhoto } from '../data/portfolio';
+  import { createLightbox } from '../scripts/lightbox';
   const stage = document.querySelector<HTMLElement>('[data-feature-stage]');
   if (stage) {
     const photos: GalleryPhoto[] = JSON.parse(stage.dataset.photos ?? '[]');
@@ -49,9 +48,8 @@ const first = photos[0];
     const tipZh = stage.querySelector<HTMLElement>('[data-feature-tip-zh]');
     const tipEn = stage.querySelector<HTMLElement>('[data-feature-tip-en]');
     const status = stage.querySelector<HTMLElement>('[data-feature-status]');
-    const dialog = stage.querySelector<HTMLDialogElement>('[data-feature-dialog]');
-    const full = stage.querySelector<HTMLImageElement>('[data-feature-full]');
-    const fullCaption = stage.querySelector<HTMLElement>('[data-feature-full-caption]');
+    const dialog = stage.querySelector<HTMLDialogElement>('[data-lightbox]');
+    const lightbox = dialog ? createLightbox(dialog, photos, (index) => { void show(index, true); }) : undefined;
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     let current = 0;
     let requested = 0;
@@ -151,17 +149,11 @@ const first = photos[0];
     open?.addEventListener('pointercancel', () => { touchStart = undefined; });
     open?.addEventListener('click', () => {
       if (swiped) { swiped = false; return; }
-      if (!dialog || !full) return;
-      const photo = photos[current];
-      full.src = photo.src;
-      full.alt = photo.alt;
-      if (fullCaption) fullCaption.textContent = photo.title ?? '';
-      dialog.showModal();
+      ++requestVersion;
+      requested = current;
+      lightbox?.open(current);
       schedule();
     });
-    stage.querySelector('[data-feature-close]')?.addEventListener('click', () => dialog?.close());
-    dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
-    dialog?.addEventListener('close', () => { full?.removeAttribute('src'); schedule(); });
     const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }, { threshold: 0.15 });
     observer.observe(stage);
     window.addEventListener('pagehide', () => { stop(); observer.disconnect(); });
