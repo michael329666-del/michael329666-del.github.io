@@ -8,7 +8,7 @@ const first = photos[0];
 {first && <div class="feature-stage" data-feature-stage data-photos={JSON.stringify(photos)} role="region" aria-roledescription="carousel" aria-label="Selected photographs / 精选照片" tabindex="0">
   <button class="feature-open" type="button" data-feature-open aria-label={`View photograph / 查看大图: ${first.alt}`}>
     <span class="feature-canvas">
-      <img class="feature-frame is-active" data-feature-frame src={first.src} srcset={`${first.thumb} 900w, ${first.src} ${first.width}w`} sizes="(max-width: 900px) 90vw, 45vw" width={first.width} height={first.height} alt={first.alt} fetchpriority="high" decoding="async" />
+      <img class="feature-frame is-active" data-feature-frame src={first.src} srcset={first.srcSet ?? `${first.thumb} 900w, ${first.src} ${first.width}w`} sizes="(max-width: 900px) 90vw, 45vw" width={first.width} height={first.height} alt={first.alt} fetchpriority="high" decoding="async" />
       <img class="feature-frame" data-feature-frame alt="" aria-hidden="true" decoding="async" />
     </span>
     <span class="feature-expand" aria-hidden="true">↗</span>
@@ -83,7 +83,7 @@ const first = photos[0];
       const photo = photos[target];
       const nextFrame = 1 - activeFrame;
       const frame = frames[nextFrame];
-      frame.srcset = `${photo.thumb} 900w, ${photo.src} ${photo.width}w`;
+      frame.srcset = photo.srcSet ?? `${photo.thumb} 900w, ${photo.src} ${photo.width}w`;
       frame.sizes = '(max-width: 900px) 90vw, 45vw';
       frame.src = photo.src;
       frame.alt = photo.alt;

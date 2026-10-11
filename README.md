@@ -37,6 +37,9 @@ Colyer Lake 封面使用 P1011889；P1011883 作为第 18 张加入首页精选�
 [src/data/home-selection.json](src/data/home-selection.json) 中维护，
 通过 [src/data/homepage.ts](src/data/homepage.ts) 读取。
 记录保留原始文件名，网页图片副本在 `public/photos/home/`。
+P1011883 与目的地相册共用高清副本：900、1600、3840 像素宽，
+WebP 质量 94；页面按显示尺寸和屏幕密度选图，大图使用 3840 像素版。
+新文件名带 `-hq`，避免复用旧版图片缓存。
 
 轮播每 3 秒开始切换，淡入淡出持续 1.6 秒，支持上一张、下一张、暂停、键盘方向键和手机左右滑动。
 鼠标悬停时继续播放，播放/暂停按钮的提示会显示当前状态。
@@ -50,7 +53,7 @@ Colyer Lake 封面使用 P1011889；P1011883 作为第 18 张加入首页精选�
 目的地照片清单在
 [src/data/destination-selection.json](src/data/destination-selection.json)，
 图片副本在 `public/photos/destinations/<slug>/`。
-清单保留源文件夹和文件名，原图不改动。网页副本使用 WebP，
+清单保留源文件夹和文件名，原图不改动。普通网页副本使用 WebP，
 大图限制在 1600 × 2200 以内，缩略图限制在 900 × 1200 以内，
 保留原比例并移除拍摄元数据。目的地卡片用 `coverId` 指定封面。
 
@@ -75,6 +78,7 @@ node scripts/import-destinations.mjs
 
 也可以把其他精选文件夹的绝对路径作为命令参数。
 脚本只导入上表十个地点；首页文件夹继续由首页清单独立管理。
+P1011883 的高清尺寸和质量设置已保留在导入脚本中。
 脚本重建的照片清单中 `categories` 暂为空，重新导入后需恢复已审核的题材标签。
 
 正式加入照片时，请先制作适合网页的副本，再填入图片路径与说明。不要把相机原始大图直接放入网站。

@@ -6,6 +6,7 @@ export type GalleryPhoto = {
   id: string;
   src: string;
   thumb: string;
+  srcSet?: string;
   alt: string;
   title?: string;
   width?: number;

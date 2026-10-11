@@ -76,6 +76,26 @@ for (const [folder, slug, location] of albums) {
       destination: slug,
       categories: [],
     });
+    // Dense foliage in this panoramic featured photo needs more detail for large displays.
+    if (slug === 'colyer-lake' && assetId === 'p1011883') {
+      const variants = [];
+      for (const width of [900, 1600, 3840]) {
+        const name = `${assetId}-${width}-hq.webp`;
+        const info = await sharp(original).autoOrient()
+          .resize({ width, withoutEnlargement: true })
+          .webp({ quality: 94, effort: 6 }).toFile(path.join(output, name));
+        variants.push({ src: `/photos/destinations/${slug}/${name}`, ...info });
+        webBytes += info.size;
+      }
+      const highResolution = variants.at(-1);
+      Object.assign(records.at(-1), {
+        src: highResolution.src,
+        thumb: variants[0].src,
+        width: highResolution.width,
+        height: highResolution.height,
+        srcSet: variants.map((variant) => `${variant.src} ${variant.width}w`).join(', '),
+      });
+    }
     audit.push({ folder, filename, bytes: original.length, sha256 });
 
     const left = (index % 6) * 250 + 10;

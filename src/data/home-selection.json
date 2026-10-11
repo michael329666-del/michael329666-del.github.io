@@ -174,9 +174,10 @@
     "sourceFilename": "P1011883.jpg",
     "title": "Autumn passage",
     "alt": "A kayaker raises an orange paddle below vivid golden autumn trees at Colyer Lake.",
-    "src": "/photos/home/p1011883.webp",
-    "thumb": "/photos/home/p1011883-thumb.webp",
-    "width": 1600,
-    "height": 665
+    "src": "/photos/destinations/colyer-lake/p1011883-3840-hq.webp",
+    "thumb": "/photos/destinations/colyer-lake/p1011883-900-hq.webp",
+    "width": 3840,
+    "height": 1597,
+    "srcSet": "/photos/destinations/colyer-lake/p1011883-900-hq.webp 900w, /photos/destinations/colyer-lake/p1011883-1600-hq.webp 1600w, /photos/destinations/colyer-lake/p1011883-3840-hq.webp 3840w"
   }
 ]
