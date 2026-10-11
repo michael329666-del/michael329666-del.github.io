@@ -9,6 +9,7 @@ const project = fileURLToPath(new URL('../', import.meta.url));
 const source = path.resolve(process.argv[2] ?? 'C:/Users/王牧川1/Desktop/PHOTOS/jpg photos/精选');
 const albums = [
   ['Boston', 'boston', 'Boston, MA'],
+  ['Colyer Lake', 'colyer-lake', 'Colyer Lake, PA'],
   ['DC', 'washington-dc', 'Washington, DC'],
   ['Harrisburg', 'harrisburg', 'Harrisburg, PA'],
   ['HongKong', 'hong-kong', 'Hong Kong, China'],

@@ -43,6 +43,7 @@ export function collectionPath(kind: CollectionKind, slug: string) {
 
 export const destinations: Collection[] = [
   { slug: 'boston', name: '波士顿，马萨诸塞', english: 'Boston, MA', note: 'Photographs from Boston, Massachusetts.', accent: 'stone', coverId: 'boston-dsc00926' },
+  { slug: 'colyer-lake', name: '科利尔湖，宾夕法尼亚', english: 'Colyer Lake, PA', note: 'Autumn photographs from Colyer Lake, Pennsylvania.', accent: 'spring', coverId: 'colyer-lake-p1011889' },
   { slug: 'washington-dc', name: '华盛顿，哥伦比亚特区', english: 'Washington, DC', note: 'Photographs from Washington, D.C.', accent: 'city', coverId: 'washington-dc-dsc04793' },
   { slug: 'harrisburg', name: '哈里斯堡，宾夕法尼亚', english: 'Harrisburg, PA', note: 'Photographs from Harrisburg, Pennsylvania.', accent: 'spring', coverId: 'harrisburg-dsc08266' },
   { slug: 'hong-kong', name: '香港，中国', english: 'Hong Kong, China', note: 'Photographs from Hong Kong.', accent: 'city', coverId: 'hong-kong-dsc01378' },
