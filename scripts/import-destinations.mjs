@@ -76,8 +76,8 @@ for (const [folder, slug, location] of albums) {
       destination: slug,
       categories: [],
     });
-    // Dense foliage in this panoramic featured photo needs more detail for large displays.
-    if (slug === 'colyer-lake' && assetId === 'p1011883') {
+    // Both versions of this autumn photograph need fine foliage detail on large displays.
+    if (slug === 'colyer-lake' && ['p1011883', 'p1011883-1'].includes(assetId)) {
       const variants = [];
       for (const width of [900, 1600, 3840]) {
         const name = `${assetId}-${width}-hq.webp`;
