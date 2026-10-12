@@ -76,13 +76,14 @@ for (const [folder, slug, location] of albums) {
       destination: slug,
       categories: [],
     });
-    // Both versions of this autumn photograph need fine foliage detail on large displays.
-    if (slug === 'colyer-lake' && ['p1011883', 'p1011883-1'].includes(assetId)) {
+    // Preserve fine autumn foliage throughout the Colyer Lake album.
+    if (slug === 'colyer-lake') {
       const variants = [];
       for (const width of [900, 1600, 3840]) {
         const name = `${assetId}-${width}-hq.webp`;
         const info = await sharp(original).autoOrient()
-          .resize({ width, withoutEnlargement: true })
+          .resize({ width, height: width === 3840 ? 3840 : width === 1600 ? 2200 : 1200,
+            fit: 'inside', withoutEnlargement: true })
           .webp({ quality: 94, effort: 6 }).toFile(path.join(output, name));
         variants.push({ src: `/photos/destinations/${slug}/${name}`, ...info });
         webBytes += info.size;
