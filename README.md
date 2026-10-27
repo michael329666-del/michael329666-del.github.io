@@ -2,8 +2,8 @@
 
 Michael Wang 的 Astro 摄影作品集，已发布到
 [GitHub Pages](https://michael329666-del.github.io/)。
-首页已加入 18 张精选照片，目的地相册已加入 10 个地点的 212 张照片。
-题材相册已逐张复核并精简：风景与自然 70 张，街头与生活 89 张。
+首页已加入 23 张精选照片，目的地相册已加入 13 个地点的 272 张照片。
+题材相册保留精选：风景与自然 89 张，街头与生活 103 张。
 人像已加入 7 位模特的 40 张照片，每位模特一个独立相册。
 
 29 组相似场景和连拍各保留一张，共从题材中移除 52 张。
@@ -18,8 +18,8 @@ Colyer Lake 封面使用 P1011889；P1011883 和 P1011883_1 均保留在目的�
 
 ## 页面
 
-- `/`：18 张首页精选、首屏轮播和可点击放大的照片墙
-- `/destinations/`：十个地点的照片封面与数量，顺序与精选文件夹一致
+- `/`：23 张首页精选、首屏轮播和可点击放大的照片墙
+- `/destinations/`：十三个地点的照片封面与数量，顺序与精选文件夹一致
 - `/destinations/<slug>/`：目的地照片网格
 - `/categories/`：按题材浏览
 - `/categories/<slug>/`：题材照片网格
@@ -64,11 +64,14 @@ Colyer Lake 全部照片使用质量 94 的高清 WebP，并提供三个响应�
 
 | 地点文件夹 | 照片数量 |
 | --- | --- |
+| Bellefonte | 23 |
+| Black Moshanno State Park | 26 |
 | Boston | 29 |
 | Colyer Lake | 9 |
 | DC | 20 |
-| Harrisburg | 9 |
+| Harrisburg | 13 |
 | HongKong | 13 |
+| Little Buffalo State Park | 7 |
 | Miami | 54 |
 | Orlando | 6 |
 | Penn's Cave& Wildlife | 40 |
@@ -85,6 +88,10 @@ node scripts/import-destinations.mjs
 脚本只导入上表十个地点；首页文件夹继续由首页清单独立管理。
 Colyer Lake 全部照片的高清尺寸和质量设置已保留在导入脚本中。
 脚本重建的照片清单中 `categories` 暂为空，重新导入后需恢复已审核的题材标签。
+
+2026 年 10 月新增的三个目的地、Harrisburg 的四张照片以及首页的五张照片，
+使用 `node scripts/import-october-2026.mjs` 增量导入；已存在的记录和题材标签不会被覆盖。
+这些新照片使用质量 94 的 900、1600、3840 像素 WebP 响应式副本，首页从首页精选文件夹单独取图。
 
 正式加入照片时，请先制作适合网页的副本，再填入图片路径与说明。不要把相机原始大图直接放入网站。
 

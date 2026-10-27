@@ -179,5 +179,60 @@
     "width": 3840,
     "height": 2880,
     "srcSet": "/photos/destinations/colyer-lake/p1011883-1-900-hq.webp 900w, /photos/destinations/colyer-lake/p1011883-1-1600-hq.webp 1600w, /photos/destinations/colyer-lake/p1011883-1-3840-hq.webp 3840w"
+  },
+  {
+    "id": "p1012355",
+    "sourceFilename": "P1012355.jpg",
+    "title": "Autumn afternoon",
+    "alt": "A person sits beneath autumn trees beside the water in Bellefonte.",
+    "src": "/photos/home/p1012355-3840-hq.webp",
+    "thumb": "/photos/home/p1012355-900-hq.webp",
+    "width": 3840,
+    "height": 2557,
+    "srcSet": "/photos/home/p1012355-900-hq.webp 900w, /photos/home/p1012355-1600-hq.webp 1600w, /photos/home/p1012355-3840-hq.webp 3840w"
+  },
+  {
+    "id": "p1012369",
+    "sourceFilename": "P1012369.jpg",
+    "title": "Under the willows",
+    "alt": "People gather under sunlit willow trees beside the water in Bellefonte.",
+    "src": "/photos/home/p1012369-3840-hq.webp",
+    "thumb": "/photos/home/p1012369-900-hq.webp",
+    "width": 3840,
+    "height": 2557,
+    "srcSet": "/photos/home/p1012369-900-hq.webp 900w, /photos/home/p1012369-1600-hq.webp 1600w, /photos/home/p1012369-3840-hq.webp 3840w"
+  },
+  {
+    "id": "p1012480",
+    "sourceFilename": "P1012480.jpg",
+    "title": "By the river",
+    "alt": "A quiet bench beneath trees overlooking the river in Harrisburg.",
+    "src": "/photos/home/p1012480-3840-hq.webp",
+    "thumb": "/photos/home/p1012480-900-hq.webp",
+    "width": 3840,
+    "height": 2353,
+    "srcSet": "/photos/home/p1012480-900-hq.webp 900w, /photos/home/p1012480-1600-hq.webp 1600w, /photos/home/p1012480-3840-hq.webp 3840w"
+  },
+  {
+    "id": "p1012548",
+    "sourceFilename": "P1012548.jpg",
+    "title": "Autumn canopy",
+    "alt": "An orange autumn tree frames a bench overlooking the river in Harrisburg.",
+    "src": "/photos/home/p1012548-3840-hq.webp",
+    "thumb": "/photos/home/p1012548-900-hq.webp",
+    "width": 2595,
+    "height": 3840,
+    "srcSet": "/photos/home/p1012548-900-hq.webp 811w, /photos/home/p1012548-1600-hq.webp 1487w, /photos/home/p1012548-3840-hq.webp 2595w"
+  },
+  {
+    "id": "p1012579",
+    "sourceFilename": "P1012579.jpg",
+    "title": "Among the trees",
+    "alt": "A person walks through an autumn woodland beside a pavilion at Little Buffalo State Park.",
+    "src": "/photos/home/p1012579-3840-hq.webp",
+    "thumb": "/photos/home/p1012579-900-hq.webp",
+    "width": 3840,
+    "height": 2557,
+    "srcSet": "/photos/home/p1012579-900-hq.webp 900w, /photos/home/p1012579-1600-hq.webp 1600w, /photos/home/p1012579-3840-hq.webp 3840w"
   }
 ]

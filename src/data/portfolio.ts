@@ -43,11 +43,14 @@ export function collectionPath(kind: CollectionKind, slug: string) {
 }
 
 export const destinations: Collection[] = [
+  { slug: 'bellefonte', name: '贝尔方特，宾夕法尼亚', english: 'Bellefonte, PA', note: 'Photographs from Bellefonte, Pennsylvania.', accent: 'spring', coverId: 'bellefonte-p1012355' },
+  { slug: 'black-moshannon-state-park', name: '黑莫沙农州立公园，宾夕法尼亚', english: 'Black Moshannon State Park, PA', note: 'Photographs from Black Moshannon State Park, Pennsylvania.', accent: 'spring', coverId: 'black-moshannon-state-park-p1012045' },
   { slug: 'boston', name: '波士顿，马萨诸塞', english: 'Boston, MA', note: 'Photographs from Boston, Massachusetts.', accent: 'stone', coverId: 'boston-dsc00926' },
   { slug: 'colyer-lake', name: '科利尔湖，宾夕法尼亚', english: 'Colyer Lake, PA', note: 'Autumn photographs from Colyer Lake, Pennsylvania.', accent: 'spring', coverId: 'colyer-lake-p1011889' },
   { slug: 'washington-dc', name: '华盛顿，哥伦比亚特区', english: 'Washington, DC', note: 'Photographs from Washington, D.C.', accent: 'city', coverId: 'washington-dc-dsc04793' },
   { slug: 'harrisburg', name: '哈里斯堡，宾夕法尼亚', english: 'Harrisburg, PA', note: 'Photographs from Harrisburg, Pennsylvania.', accent: 'spring', coverId: 'harrisburg-dsc08266' },
   { slug: 'hong-kong', name: '香港，中国', english: 'Hong Kong, China', note: 'Photographs from Hong Kong.', accent: 'city', coverId: 'hong-kong-dsc01378' },
+  { slug: 'little-buffalo-state-park', name: '小水牛州立公园，宾夕法尼亚', english: 'Little Buffalo State Park, PA', note: 'Photographs from Little Buffalo State Park, Pennsylvania.', accent: 'spring', coverId: 'little-buffalo-state-park-p1012590' },
   { slug: 'miami', name: '迈阿密，佛罗里达', english: 'Miami, FL', note: 'Photographs from Miami, Florida.', accent: 'coast', coverId: 'miami-dsc06261' },
   { slug: 'orlando', name: '奥兰多，佛罗里达', english: 'Orlando, FL', note: 'Photographs from Orlando, Florida.', accent: 'coast', coverId: 'orlando-dsc07975' },
   { slug: 'penns-cave', name: '潘斯洞穴与野生动物园，宾夕法尼亚', english: 'Penn’s Cave & Wildlife, PA', note: 'Photographs from Penn’s Cave & Wildlife, Pennsylvania.', accent: 'spring', coverId: 'penns-cave-p1011169' },
