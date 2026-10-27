@@ -3827,7 +3827,7 @@
     "srcSet": "/photos/destinations/harrisburg/p1012480-900-hq.webp 900w, /photos/destinations/harrisburg/p1012480-1600-hq.webp 1600w, /photos/destinations/harrisburg/p1012480-3840-hq.webp 3840w",
     "destination": "harrisburg",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -3891,7 +3891,7 @@
     "srcSet": "/photos/destinations/little-buffalo-state-park/p1012579-900-hq.webp 900w, /photos/destinations/little-buffalo-state-park/p1012579-1600-hq.webp 1600w, /photos/destinations/little-buffalo-state-park/p1012579-3840-hq.webp 3840w",
     "destination": "little-buffalo-state-park",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -3922,9 +3922,7 @@
     "height": 2558,
     "srcSet": "/photos/destinations/little-buffalo-state-park/p1012590-900-hq.webp 900w, /photos/destinations/little-buffalo-state-park/p1012590-1600-hq.webp 1600w, /photos/destinations/little-buffalo-state-park/p1012590-3840-hq.webp 3840w",
     "destination": "little-buffalo-state-park",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "little-buffalo-state-park-p1012620",
@@ -3938,9 +3936,7 @@
     "height": 2558,
     "srcSet": "/photos/destinations/little-buffalo-state-park/p1012620-900-hq.webp 900w, /photos/destinations/little-buffalo-state-park/p1012620-1600-hq.webp 1600w, /photos/destinations/little-buffalo-state-park/p1012620-3840-hq.webp 3840w",
     "destination": "little-buffalo-state-park",
-    "categories": [
-      "landscape"
-    ]
+    "categories": []
   },
   {
     "id": "little-buffalo-state-park-p1012643",

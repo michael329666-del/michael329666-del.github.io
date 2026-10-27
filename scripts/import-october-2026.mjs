@@ -13,12 +13,12 @@ const albums = [
   ['Harrisburg', 'harrisburg', 'Harrisburg, PA'],
   ['Little Buffalo State Park', 'little-buffalo-state-park', 'Little Buffalo State Park, PA'],
 ];
-const nature = new Set(['P1012321','P1012355','P1012361','P1011974','P1012013','P1012045','P1012092','P1012099','P1012115','P1012182','P1012304','P1012480','P1012548','P1012579','P1012585','P1012590','P1012620','P1012658','P1012664']);
-const life = new Set(['P1012307','P1012311','P1012318','P1012335','P1012339','P1012349','P1012369','P1012376','P1012406','P1012409','P1012425','P1012234','P1012547','P1012569']);
+const nature = new Set(['P1012321','P1012355','P1012361','P1011974','P1012013','P1012045','P1012092','P1012099','P1012115','P1012182','P1012304','P1012548','P1012585','P1012658','P1012664']);
+const life = new Set(['P1012307','P1012311','P1012318','P1012335','P1012339','P1012349','P1012369','P1012376','P1012406','P1012409','P1012425','P1012234','P1012480','P1012547','P1012569','P1012579']);
 const featured = [
   ['P1012355.jpg', 'Autumn afternoon', 'A person sits beneath autumn trees beside the water in Bellefonte.'],
   ['P1012369.jpg', 'Under the willows', 'People gather under sunlit willow trees beside the water in Bellefonte.'],
-  ['P1012480.jpg', 'By the river', 'A quiet bench beneath trees overlooking the river in Harrisburg.'],
+  ['P1012480.jpg', 'By the river', 'A person stands beside a swing overlooking the river beneath autumn trees in Harrisburg.'],
   ['P1012548.jpg', 'Autumn canopy', 'An orange autumn tree frames a bench overlooking the river in Harrisburg.'],
   ['P1012579.jpg', 'Among the trees', 'A person walks through an autumn woodland beside a pavilion at Little Buffalo State Park.'],
 ];
