@@ -13,6 +13,8 @@ const { photos, lightboxPhotos = photos, currentPage, lastPage, basePath, eagerC
 const photoIndexes = new Map(lightboxPhotos.map((photo, index) => [photo.id, index]));
 const lightboxData = lightboxPhotos.map(({ src, alt, title }) => ({ src, alt, title }));
 const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${page}/`;
+const pageNumbers = Array.from({ length: lastPage }, (_, index) => index + 1)
+  .filter((page) => lastPage <= 7 || page === 1 || page === lastPage || Math.abs(page - currentPage) <= 1);
 ---
 {photos.length > 0 ? (
   <div data-gallery data-photos={JSON.stringify(lightboxData)}>
@@ -24,7 +26,26 @@ const pageHref = (page: number) => page === 1 ? basePath : `${basePath}page/${pa
         </button>
       ))}
     </div>
-    {lastPage > 1 && <nav class="pagination" aria-label="Photo pagination"><a href={currentPage > 1 ? pageHref(currentPage - 1) : undefined} aria-disabled={currentPage === 1 ? 'true' : undefined}>← Previous / <span lang="zh-CN">上一页</span></a><span>{currentPage} / {lastPage}</span><a href={currentPage < lastPage ? pageHref(currentPage + 1) : undefined} aria-disabled={currentPage === lastPage ? 'true' : undefined}>Next / <span lang="zh-CN">下一页</span> →</a></nav>}
+    {lastPage > 1 && (
+      <nav class="pagination" aria-label="Photo pagination / 照片分页">
+        <div class="pagination-controls">
+          {currentPage > 1 ? <a href={pageHref(1)}>First / <span lang="zh-CN">首页</span></a> : <span class="pagination-disabled">First / <span lang="zh-CN">首页</span></span>}
+          {currentPage > 1 ? <a href={pageHref(currentPage - 1)}>← Previous / <span lang="zh-CN">上一页</span></a> : <span class="pagination-disabled">← Previous / <span lang="zh-CN">上一页</span></span>}
+        </div>
+        <div class="pagination-pages">
+          {pageNumbers.map((page, index) => (
+            <>
+              {index > 0 && page - pageNumbers[index - 1] > 1 && <span class="pagination-ellipsis" aria-hidden="true">…</span>}
+              <a href={pageHref(page)} aria-label={`Page ${page} / 第 ${page} 页`} aria-current={page === currentPage ? 'page' : undefined}>{page}</a>
+            </>
+          ))}
+        </div>
+        <div class="pagination-controls">
+          {currentPage < lastPage ? <a href={pageHref(currentPage + 1)}>Next / <span lang="zh-CN">下一页</span> →</a> : <span class="pagination-disabled">Next / <span lang="zh-CN">下一页</span> →</span>}
+          {currentPage < lastPage ? <a href={pageHref(lastPage)}>Last / <span lang="zh-CN">尾页</span></a> : <span class="pagination-disabled">Last / <span lang="zh-CN">尾页</span></span>}
+        </div>
+      </nav>
+    )}
     <PhotoLightbox />
     <script>
       import { createLightbox, type LightboxPhoto } from '../scripts/lightbox';
