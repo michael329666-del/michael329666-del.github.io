@@ -11,7 +11,7 @@
     "height": 2200,
     "destination": "boston",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -71,7 +71,7 @@
     "height": 1200,
     "destination": "boston",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -112,7 +112,7 @@
     "height": 2200,
     "destination": "boston",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -441,9 +441,7 @@
     "width": 3840,
     "height": 2019,
     "destination": "colyer-lake",
-    "categories": [
-      "landscape"
-    ],
+    "categories": [],
     "srcSet": "/photos/destinations/colyer-lake/p1011881-900-hq.webp 900w, /photos/destinations/colyer-lake/p1011881-1600-hq.webp 1600w, /photos/destinations/colyer-lake/p1011881-3840-hq.webp 3840w"
   },
   {
@@ -472,7 +470,7 @@
     "height": 2880,
     "destination": "colyer-lake",
     "categories": [
-      "landscape"
+      "life"
     ],
     "srcSet": "/photos/destinations/colyer-lake/p1011883-1-900-hq.webp 900w, /photos/destinations/colyer-lake/p1011883-1-1600-hq.webp 1600w, /photos/destinations/colyer-lake/p1011883-1-3840-hq.webp 3840w"
   },
@@ -747,7 +745,7 @@
     "height": 1067,
     "destination": "washington-dc",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -775,7 +773,7 @@
     "height": 1067,
     "destination": "washington-dc",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -998,7 +996,7 @@
     "height": 2200,
     "destination": "harrisburg",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -1803,7 +1801,7 @@
     "height": 1067,
     "destination": "miami",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -3157,7 +3155,7 @@
     "srcSet": "/photos/destinations/bellefonte/p1012321-900-hq.webp 900w, /photos/destinations/bellefonte/p1012321-1600-hq.webp 1600w, /photos/destinations/bellefonte/p1012321-3840-hq.webp 3840w",
     "destination": "bellefonte",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -3221,7 +3219,7 @@
     "srcSet": "/photos/destinations/bellefonte/p1012355-900-hq.webp 900w, /photos/destinations/bellefonte/p1012355-1600-hq.webp 1600w, /photos/destinations/bellefonte/p1012355-3840-hq.webp 3840w",
     "destination": "bellefonte",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
@@ -3859,7 +3857,7 @@
     "srcSet": "/photos/destinations/harrisburg/p1012548-900-hq.webp 811w, /photos/destinations/harrisburg/p1012548-1600-hq.webp 1487w, /photos/destinations/harrisburg/p1012548-3840-hq.webp 2595w",
     "destination": "harrisburg",
     "categories": [
-      "landscape"
+      "life"
     ]
   },
   {
